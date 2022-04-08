@@ -5,6 +5,18 @@ import { StyleSheet, TextInput } from 'react-native';
 const Square = (props) => {
     const {index, guessState, currentGuess, currentLetter, onLetterEntry} = props
     const [value, setValue] = useState('')
+
+    const handleEntry = (e) => {
+        setValue(e.target.value)
+        onLetterEntry(e.target.value)
+    }
+    let autofocus = currentLetter === index
+    let component = true
+    if (autofocus) {
+        component = false
+        component = true
+    }
+
 }
 
 const squareStyles = StyleSheet.create ({
