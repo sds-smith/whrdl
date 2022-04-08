@@ -11,28 +11,20 @@ const Square = (props) => {
         onLetterEntry(e.target.value)
     }
     let autofocus = ((currentGuess === guessId) && (currentLetter === index))
-    console.log(currentGuess, guessId, currentLetter, index, autofocus)
-    let component = true
-    if (autofocus) {
-        component = false
-        component = true
-    }
 
-    // if (component) {
-        return (
-            <TextInput 
-            value={value}
-            guessState={guessState}
-            currentGuess={currentGuess}
-            style={squareStyles.main}
-            autoCapitalize='characters'
-            caretHidden
-            maxLength={1}
-            onChange={handleEntry}
-            autoFocus={autofocus}
-            />
-        )
-    // }
+    return (
+        <TextInput 
+        value={value}
+        guessState={guessState}
+        currentGuess={currentGuess}
+        style={squareStyles.main}
+        autoCapitalize='characters'
+        caretHidden
+        maxLength={1}
+        onChange={handleEntry}
+        autoFocus={autofocus}
+        />
+    )
 }
 
 const squareStyles = StyleSheet.create ({

@@ -23,6 +23,7 @@ export default function App() {
 
   const handleLetterEntry = (letter) => {
     setCurrentLetter(currentLetter => currentLetter + 1)
+
     switch (true) {
       case currentGuess === 'guess1' : 
         setGuessState(guessState => ({...guessState, guess1 : guessState.guess1 + letter}))
