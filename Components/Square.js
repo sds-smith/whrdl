@@ -3,21 +3,22 @@ import { useState } from 'react'
 import { StyleSheet, TextInput } from 'react-native';
 
 const Square = (props) => {
-    const {index, guessState, currentGuess, currentLetter, onLetterEntry} = props
+    const {guessId, index, guessState, currentGuess, currentLetter, onLetterEntry} = props
     const [value, setValue] = useState('')
 
     const handleEntry = (e) => {
         setValue(e.target.value)
         onLetterEntry(e.target.value)
     }
-    let autofocus = currentLetter === index
+    let autofocus = ((currentGuess === guessId) && (currentLetter === index))
+    console.log(currentGuess, guessId, currentLetter, index, autofocus)
     let component = true
     if (autofocus) {
         component = false
         component = true
     }
 
-    if (component) {
+    // if (component) {
         return (
             <TextInput 
             value={value}
@@ -31,7 +32,7 @@ const Square = (props) => {
             autoFocus={autofocus}
             />
         )
-    }
+    // }
 }
 
 const squareStyles = StyleSheet.create ({
