@@ -21,6 +21,42 @@ export default function App() {
   const [currentLetter,setCurrentLetter] = useState(0)
   const [targetWord, setTargetWord] = useState('orate')
 
+  const handleLetterEntry = (letter) => {
+    setCurrentLetter(currentLetter => currentLetter + 1)
+    switch (true) {
+      case currentGuess === 'guess1' : 
+        setGuessState(guessState => ({...guessState, guess1 : guessState.guess1 + letter}))
+        break
+      case currentGuess === 'guess2' : 
+        setGuessState(guessState => ({...guessState, guess2 : guessState.guess2 + letter}))
+        break
+      case currentGuess === 'guess3' : 
+        setGuessState(guessState => ({...guessState, guess3 : guessState.guess3 + letter}))
+        break
+      case currentGuess === 'guess4' : 
+        setGuessState(guessState => ({...guessState, guess4 : guessState.guess4 + letter}))
+        break
+      case currentGuess === 'guess5' : 
+        setGuessState(guessState => ({...guessState, guess5 : guessState.guess5 + letter}))
+        break
+      case currentGuess === 'guess6' : 
+        setGuessState(guessState => ({...guessState, guess6 : guessState.guess6 + letter}))
+        break 
+      default :
+        break   
+    }
+  }
+
+
+
+  const handleWordEntry = () => {
+    if (guessState[currentGuess] === targetWord) {
+      window.alert('YOU WIN!')
+    } else {
+      window.alert('wha wha (sad trombone)')
+    }
+  }
+
 
   return (
     <View style={styles.container}>
