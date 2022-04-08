@@ -3,7 +3,8 @@ import { useState, useEffect } from 'react'
 import { StyleSheet, TextInput } from 'react-native';
 
 const Square = (props) => {
-    
+    const {index, guessState, currentGuess, currentLetter, onLetterEntry} = props
+    const [value, setValue] = useState('')
 }
 
 const squareStyles = StyleSheet.create ({
