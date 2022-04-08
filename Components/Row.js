@@ -5,6 +5,8 @@ import Square from './Square';
 
 const Row = (props) => {
 
+    const {guessState, currentGuess, currentLetter, onLetterEntry, onWordEntry} = props
+
 }
 
 const rowStyles = StyleSheet.create ({
