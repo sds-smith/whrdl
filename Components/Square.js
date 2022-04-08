@@ -17,6 +17,21 @@ const Square = (props) => {
         component = true
     }
 
+    if (component) {
+        return (
+            <TextInput 
+            value={value}
+            guessState={guessState}
+            currentGuess={currentGuess}
+            style={squareStyles.main}
+            autoCapitalize='characters'
+            caretHidden
+            maxLength={1}
+            onChange={handleEntry}
+            autoFocus={autofocus}
+            />
+        )
+    }
 }
 
 const squareStyles = StyleSheet.create ({
