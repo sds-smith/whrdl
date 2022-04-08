@@ -4,6 +4,8 @@ import  Row from './Row';
 
 const Board = (props) => {
 
+    const {guessState, currentGuess, currentLetter, handleLetterEntry, handleWordEntry} = props
+
 }
 
 const boardStyles = StyleSheet.create ({
