@@ -47,8 +47,6 @@ export default function App() {
     }
   }
 
-
-
   const handleWordEntry = () => {
     if (guessState[currentGuess] === targetWord) {
       window.alert('YOU WIN!')
@@ -60,8 +58,15 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <Header />
+      <Board
+        guessState={guessState}
+        currentGuess={currentGuess}
+        currentLetter={currentLetter}
+        handleLetterEntry={handleLetterEntry}
+        handleWordEntry={handleWordEntry}
+      />
+      <Keyboard />
     </View>
   );
 }
