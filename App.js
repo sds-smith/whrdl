@@ -71,7 +71,7 @@ export default function App() {
         handleLetterEntry={handleLetterEntry}
         handleWordEntry={handleWordEntry}
       />
-      <Keyboard />
+      <Keyboard handleWordEntry={handleWordEntry} />
     </View>
   );
 }

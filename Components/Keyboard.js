@@ -1,7 +1,10 @@
 import * as React from 'react';
 import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native';
 import LetterKey from './Key.js'
-const Keyboard = () => {
+
+const Keyboard = (props) => {
+
+    const {handleWordEntry} = props
 
     return (
         <View style={keyboardStyles.main}>
@@ -29,7 +32,7 @@ const Keyboard = () => {
                 <LetterKey  title='L' />
             </View>
             <View style={keyboardStyles.row}>
-                <FunctionKey  title='ENTER' />
+                <FunctionKey  title='ENTER' onPress={handleWordEntry}/>
                 <LetterKey  title='Z' />
                 <LetterKey  title='X' />
                 <LetterKey  title='C' />
@@ -37,7 +40,7 @@ const Keyboard = () => {
                 <LetterKey  title='B' />
                 <LetterKey  title='N' />
                 <LetterKey  title='M' />
-                <FunctionKey className={'large'}title='&#9003;' />
+                <FunctionKey className={'large'} title='&#9003;' />
             </View>
         </View>
     )
@@ -45,9 +48,10 @@ const Keyboard = () => {
 
 const FunctionKey = (props) => {
     const {className, title} = props
-
     return (
-        <TouchableOpacity style={keyboardStyles.funcButton}><Text style={className === 'large' ? keyboardStyles.buttonTextLg : keyboardStyles.buttonText}>{title}</Text></TouchableOpacity>
+        <TouchableOpacity style={keyboardStyles.funcButton}>
+            <Text style={className === 'large' ? keyboardStyles.buttonTextLg : keyboardStyles.buttonText}>{title}</Text>
+        </TouchableOpacity>
     )
 }
 
