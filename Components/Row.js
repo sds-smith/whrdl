@@ -1,51 +1,130 @@
 import * as React from 'react';
-import { useRef } from 'react'
-import { StyleSheet, View, Button } from 'react-native';
+import { useState, useRef } from 'react'
+import { StyleSheet, View, TextInput, Button } from 'react-native';
 import Square from './Square';
 
 const Row = (props) => {
 
     const {guessId, guessState, currentGuess, currentLetter, onLetterEntry, onWordEntry} = props
-    const {square1, square2, square3, square4, square0} = useRef()
 
+    const square0 = useRef()
+    const square1 = useRef()    
+    const square2 = useRef()
+    const square3 = useRef()
+    const square4 = useRef()
+    const enterButton = useRef()
+
+    const [value0, setValue0] = useState('')    
+    const [value1, setValue1] = useState('')
+    const [value2, setValue2] = useState('')
+    const [value3, setValue3] = useState('')
+    const [value4, setValue4] = useState('')
+    
+    const handleEntry = (e) => {
+        const value = e.target.value
+        switch (currentLetter) {
+            case 0 : 
+                setValue0(value)
+                square1.current.focus()
+                break
+            case 1 : 
+                setValue1(value)
+                square2.current.focus()
+                break
+            case 2 : 
+                setValue2(value)
+                square3.current.focus()
+                break
+            case 3 : 
+                setValue3(value)
+                square4.current.focus()
+                break
+            case 4 : 
+                setValue4(value)
+                // enterButton.current.focus()
+                break
+            default:
+                break
+        }
+        onLetterEntry(value)
+    }
+    
     return (
+  
         <View style={rowStyles.main}>
-            <Square index={0} id={'0'} ref={square0}
-                guessId={guessId} 
+
+            <TextInput 
+                ref={(square0)}
+                value={value0}
                 guessState={guessState}
                 currentGuess={currentGuess}
-                currentLetter={currentLetter} 
-                onLetterEntry={onLetterEntry}
+                style={rowStyles.square}
+                // autoCapitalize='characters'
+                autoCorrect={false}
+                autoComplete={false}
+                caretHidden
+                maxLength={1}
+                onChange={handleEntry}
+                autoFocus={currentGuess === guessId}
             />
-            <Square index={1} id={'1'} ref={square1} 
-                guessId={guessId}
+
+            <TextInput 
+                ref={square1}
+                value={value1}
                 guessState={guessState}
                 currentGuess={currentGuess}
-                currentLetter={currentLetter} 
-                onLetterEntry={onLetterEntry}
+                style={rowStyles.square}
+                // autoCapitalize='characters'
+                autoCorrect={false}
+                autoComplete={false}
+                caretHidden
+                maxLength={1}
+                onChange={handleEntry}
             />
-            <Square index={2} id={'2'} ref={square2}
-                guessId={guessId} 
+
+            <TextInput
+                ref={square2} 
+                value={value2}
                 guessState={guessState}
                 currentGuess={currentGuess}
-                currentLetter={currentLetter} 
-                onLetterEntry={onLetterEntry}
-            />
-            <Square index={3} id={'3'}  ref={square3}
-                guessId={guessId}
-                guessState={guessState}
-                currentGuess={currentGuess}
-                currentLetter={currentLetter} 
-                onLetterEntry={onLetterEntry}
-            />
-            <Square index={4} id={'4'} ref={square4}
-                guessId={guessId} 
-                guessState={guessState}
-                currentGuess={currentGuess}
-                currentLetter={currentLetter} 
-                onLetterEntry={onLetterEntry}
+                style={rowStyles.square}
+                // autoCapitalize='characters'
+                autoCorrect={false}
+                autoComplete={false}
+                caretHidden
+                maxLength={1}
+                onChange={handleEntry}
             />  
-            <Button title='ENTER' onPress={onWordEntry}/>          
+
+            <TextInput
+                ref={square3} 
+                value={value3}
+                guessState={guessState}
+                currentGuess={currentGuess}
+                style={rowStyles.square}
+                // autoCapitalize='characters'
+                autoCorrect={false}
+                autoComplete={false}
+                caretHidden
+                maxLength={1}
+                onChange={handleEntry}
+            />
+
+            <TextInput 
+                ref={square4}
+                value={value4}
+                guessState={guessState}
+                currentGuess={currentGuess}
+                style={rowStyles.square}
+                // autoCapitalize='characters'
+                autoCorrect={false}
+                autoComplete={false}
+                caretHidden
+                maxLength={1}
+                onChange={handleEntry}
+            />
+
+            <Button ref={enterButton} title='ENTER' onPress={onWordEntry}/>          
         </View>
     )
 }
@@ -55,8 +134,13 @@ const rowStyles = StyleSheet.create ({
         flex: 1,
         flexDirection: 'row',
         marginVertical: 5
-        // alignItems: 'center',
-        // justifyContent: 'center',
+    }, 
+    square: {
+        flex: 1,
+        marginHorizontal: 1,
+        borderColor: 'gray',
+        borderWidth: 1,
+        textAlign: 'center'
     }
 
 })
