@@ -56,7 +56,6 @@ const keyboardStyles = StyleSheet.create ({
         alignItems: 'center',
         justifyContent: 'center',
         width: '100%',
-        borderWidth: 5
     },
     row: {
         flex: 1,
