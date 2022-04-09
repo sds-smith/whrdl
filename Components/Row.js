@@ -48,10 +48,10 @@ const Row = (props) => {
         }
         onLetterEntry(value)
     }
-    
+    const disabled = currentGuess !== guessId
     return (
   
-        <View style={rowStyles.main}>
+        <View style={rowStyles.main} >
 
             <TextInput 
                 ref={(square0)}
@@ -59,12 +59,13 @@ const Row = (props) => {
                 guessState={guessState}
                 currentGuess={currentGuess}
                 style={rowStyles.square}
-                // autoCapitalize='characters'
+                autoCapitalize='characters'
                 autoCorrect={false}
                 autoComplete={false}
                 caretHidden
                 maxLength={1}
                 onChange={handleEntry}
+                disabled={disabled}
                 autoFocus={currentGuess === guessId}
             />
 
@@ -74,12 +75,13 @@ const Row = (props) => {
                 guessState={guessState}
                 currentGuess={currentGuess}
                 style={rowStyles.square}
-                // autoCapitalize='characters'
+                autoCapitalize='characters'
                 autoCorrect={false}
                 autoComplete={false}
                 caretHidden
                 maxLength={1}
                 onChange={handleEntry}
+                disabled={disabled}
             />
 
             <TextInput
@@ -88,12 +90,13 @@ const Row = (props) => {
                 guessState={guessState}
                 currentGuess={currentGuess}
                 style={rowStyles.square}
-                // autoCapitalize='characters'
+                autoCapitalize='characters'
                 autoCorrect={false}
                 autoComplete={false}
                 caretHidden
                 maxLength={1}
                 onChange={handleEntry}
+                disabled={disabled}
             />  
 
             <TextInput
@@ -102,12 +105,13 @@ const Row = (props) => {
                 guessState={guessState}
                 currentGuess={currentGuess}
                 style={rowStyles.square}
-                // autoCapitalize='characters'
+                autoCapitalize='characters'
                 autoCorrect={false}
                 autoComplete={false}
                 caretHidden
                 maxLength={1}
                 onChange={handleEntry}
+                disabled={disabled}
             />
 
             <TextInput 
@@ -116,12 +120,13 @@ const Row = (props) => {
                 guessState={guessState}
                 currentGuess={currentGuess}
                 style={rowStyles.square}
-                // autoCapitalize='characters'
+                autoCapitalize='characters'
                 autoCorrect={false}
                 autoComplete={false}
                 caretHidden
                 maxLength={1}
                 onChange={handleEntry}
+                disabled={disabled}
             />
 
             <Button ref={enterButton} title='ENTER' onPress={onWordEntry}/>          

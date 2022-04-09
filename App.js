@@ -15,7 +15,7 @@ export default function App() {
     guess5 : '',
     guess6 : ''
   }
-
+  const guesses = ['guess1', 'guess2', 'guess3', 'guess4', 'guess5', 'guess6']
   const [guessState, setGuessState] = useState(board)  
   const [currentGuess, setCurrentGuess] = useState('guess1')
   const [currentLetter,setCurrentLetter] = useState(0)
@@ -51,8 +51,12 @@ export default function App() {
   const handleWordEntry = () => {
     if (guessState[currentGuess].toLowerCase() === targetWord.toLowerCase()) {
       window.alert('YOU WIN!')
-    } else {
+    } else if (currentGuess === 'guess6') {
       window.alert('wha wha (sad trombone)')
+    } else {
+      const nextGuess = guesses[guesses.indexOf(currentGuess)+1]
+      setCurrentGuess(nextGuess)
+      setCurrentLetter(0)
     }
   }
 

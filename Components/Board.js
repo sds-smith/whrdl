@@ -6,6 +6,8 @@ const Board = (props) => {
 
     const {focus, guessState, currentGuess, currentLetter, handleLetterEntry, handleWordEntry} = props
 
+    
+
     return (
         <View style={boardStyles.main}>
             <Row id={1} guessId={'guess1'} 
