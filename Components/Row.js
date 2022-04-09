@@ -134,8 +134,6 @@ const Row = (props) => {
                 onChange={handleLetterEntry}
                 disabled={disabled}
             />
-
-            <Button title='ENTER' onPress={handleWordEntry}/>          
         </View>
     )
 }
@@ -144,11 +142,16 @@ const rowStyles = StyleSheet.create ({
     main: {
         flex: 1,
         flexDirection: 'row',
+        paddingHorizontal: 5,
+        justifyContent: 'center',
+        width: '100%',
         marginVertical: 5
     }, 
     square: {
         flex: 1,
-        marginHorizontal: 1,
+        width: 50,
+        fontSize: 30,
+        marginHorizontal: 5,
         borderColor: 'gray',
         borderWidth: 1,
         textAlign: 'center'

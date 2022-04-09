@@ -32,7 +32,7 @@ const Keyboard = (props) => {
                 <LetterKey  title='L' />
             </View>
             <View style={keyboardStyles.row}>
-                <FunctionKey  title='ENTER' onPress={handleWordEntry}/>
+                <FunctionKey  title='ENTER' handlePress={handleWordEntry}/>
                 <LetterKey  title='Z' />
                 <LetterKey  title='X' />
                 <LetterKey  title='C' />
@@ -47,9 +47,9 @@ const Keyboard = (props) => {
 }
 
 const FunctionKey = (props) => {
-    const {className, title} = props
+    const {className, title, handlePress} = props
     return (
-        <TouchableOpacity style={keyboardStyles.funcButton}>
+        <TouchableOpacity style={keyboardStyles.funcButton} onPress={handlePress} >
             <Text style={className === 'large' ? keyboardStyles.buttonTextLg : keyboardStyles.buttonText}>{title}</Text>
         </TouchableOpacity>
     )
