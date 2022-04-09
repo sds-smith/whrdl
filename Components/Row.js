@@ -18,10 +18,7 @@ const Row = (props) => {
     const [value3, setValue3] = useState('')
     const [value4, setValue4] = useState('')
     
-    let count=0
     useEffect(() => {
-        count ++
-        console.log('useEffect bark bark count=', count)
         square0.current.focus()
     }, [currentGuess])
 
