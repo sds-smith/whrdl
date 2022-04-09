@@ -49,7 +49,7 @@ export default function App() {
   }
 
   const handleWordEntry = () => {
-    if (guessState[currentGuess] === targetWord) {
+    if (guessState[currentGuess].toLowerCase() === targetWord.toLowerCase()) {
       window.alert('YOU WIN!')
     } else {
       window.alert('wha wha (sad trombone)')
