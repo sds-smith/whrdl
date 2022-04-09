@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { useState, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { StyleSheet, View, TextInput, Button } from 'react-native';
-import Square from './Square';
 
 const Row = (props) => {
 
@@ -12,7 +11,6 @@ const Row = (props) => {
     const square2 = useRef()
     const square3 = useRef()
     const square4 = useRef()
-    const enterButton = useRef()
 
     const [value0, setValue0] = useState('')    
     const [value1, setValue1] = useState('')
@@ -20,7 +18,14 @@ const Row = (props) => {
     const [value3, setValue3] = useState('')
     const [value4, setValue4] = useState('')
     
-    const handleEntry = (e) => {
+    let count=0
+    useEffect(() => {
+        count ++
+        console.log('useEffect bark bark count=', count)
+        square0.current.focus()
+    }, [currentGuess])
+
+    const handleLetterEntry = (e) => {
         const value = e.target.value
         switch (currentLetter) {
             case 0 : 
@@ -41,13 +46,17 @@ const Row = (props) => {
                 break
             case 4 : 
                 setValue4(value)
-                // enterButton.current.focus()
                 break
             default:
                 break
         }
         onLetterEntry(value)
     }
+
+    const handleWordEntry = () => {
+        onWordEntry()
+    }
+
     const disabled = currentGuess !== guessId
     return (
   
@@ -64,7 +73,7 @@ const Row = (props) => {
                 autoComplete={false}
                 caretHidden
                 maxLength={1}
-                onChange={handleEntry}
+                onChange={handleLetterEntry}
                 disabled={disabled}
                 autoFocus={currentGuess === guessId}
             />
@@ -80,7 +89,7 @@ const Row = (props) => {
                 autoComplete={false}
                 caretHidden
                 maxLength={1}
-                onChange={handleEntry}
+                onChange={handleLetterEntry}
                 disabled={disabled}
             />
 
@@ -95,7 +104,7 @@ const Row = (props) => {
                 autoComplete={false}
                 caretHidden
                 maxLength={1}
-                onChange={handleEntry}
+                onChange={handleLetterEntry}
                 disabled={disabled}
             />  
 
@@ -110,7 +119,7 @@ const Row = (props) => {
                 autoComplete={false}
                 caretHidden
                 maxLength={1}
-                onChange={handleEntry}
+                onChange={handleLetterEntry}
                 disabled={disabled}
             />
 
@@ -125,11 +134,11 @@ const Row = (props) => {
                 autoComplete={false}
                 caretHidden
                 maxLength={1}
-                onChange={handleEntry}
+                onChange={handleLetterEntry}
                 disabled={disabled}
             />
 
-            <Button ref={enterButton} title='ENTER' onPress={onWordEntry}/>          
+            <Button title='ENTER' onPress={handleWordEntry}/>          
         </View>
     )
 }
