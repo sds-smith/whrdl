@@ -29,7 +29,7 @@ const Keyboard = () => {
                 <LetterKey  title='L' />
             </View>
             <View style={keyboardStyles.row}>
-                <LetterKey  title='ENTER' />
+                <FunctionKey  title='ENTER' />
                 <LetterKey  title='Z' />
                 <LetterKey  title='X' />
                 <LetterKey  title='C' />
@@ -37,15 +37,17 @@ const Keyboard = () => {
                 <LetterKey  title='B' />
                 <LetterKey  title='N' />
                 <LetterKey  title='M' />
-                <FunctionKey title='&#9003;' />
+                <FunctionKey className={'large'}title='&#9003;' />
             </View>
         </View>
     )
 }
 
 const FunctionKey = (props) => {
+    const {className, title} = props
+
     return (
-        <TouchableOpacity style={keyboardStyles.funcButton}><Text style={{fontSize: 50}}>{props.title}</Text></TouchableOpacity>
+        <TouchableOpacity style={keyboardStyles.funcButton}><Text style={className === 'large' ? keyboardStyles.buttonTextLg : keyboardStyles.buttonText}>{title}</Text></TouchableOpacity>
     )
 }
 
@@ -69,7 +71,6 @@ const keyboardStyles = StyleSheet.create ({
         flex: 1,
     },
     funcButton: {
-        fontSize: 50,
         paddingHorizontal: 20,
         height: '100%',
         alignItems: 'center',
@@ -77,6 +78,13 @@ const keyboardStyles = StyleSheet.create ({
         justifyContent: 'center',
         borderRadius: 10,   
         backgroundColor: '#f2f2f2'       
+    },
+    buttonText: {
+        fontWeight: 'bold',
+        fontSize: 20
+    },
+    buttonTextLg: {
+        fontSize: 50
     }
 })
 
