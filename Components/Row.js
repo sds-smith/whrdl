@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
+import { useEffect } from 'react';
 
 const Row = (props) => {
 
@@ -12,6 +13,10 @@ const Row = (props) => {
     const value2 = wordGuess[2]
     const value3 = wordGuess[3]
     const value4 = wordGuess[4]
+
+    useEffect(() => {    
+  
+    }, [currentLetter])
 
     return (
   

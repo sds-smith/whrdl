@@ -85,32 +85,32 @@ export default function App() {
     switch (currentGuess) {
       case 'guess1' : 
         currentWord = guessState.guess1
-        currentWord.splice(currentLetter, 1)
+        currentWord.splice(currentLetter, 1, '')
         setGuessState(guessState => ({...guessState, guess1 : currentWord}))
         break
       case 'guess2' : 
         currentWord = guessState.guess2
-        currentWord.splice(currentLetter, 1)
+        currentWord.splice(currentLetter, 1, '')
         setGuessState(guessState => ({...guessState, guess2 : currentWord}))
         break
       case 'guess3' : 
         currentWord = guessState.guess3
-        currentWord.splice(currentLetter, 1)
+        currentWord.splice(currentLetter, 1, '')
         setGuessState(guessState => ({...guessState, guess3 : currentWord}))
         break
       case 'guess4' : 
         currentWord = guessState.guess4
-        currentWord.splice(currentLetter, 1)
+        currentWord.splice(currentLetter, 1, '')
         setGuessState(guessState => ({...guessState, guess4 : currentWord}))
         break
       case 'guess5' : 
         currentWord = guessState.guess5
-        currentWord.splice(currentLetter, 1)
+        currentWord.splice(currentLetter, 1, '')
         setGuessState(guessState => ({...guessState, guess5 : currentWord}))
       break
       case 'guess6' : 
         currentWord = guessState.guess6
-        currentWord.splice(currentLetter, 1)
+        currentWord.splice(currentLetter, 1, '')
         setGuessState(guessState => ({...guessState, guess6 : currentWord}))
         break 
       default :
