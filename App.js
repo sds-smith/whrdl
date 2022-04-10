@@ -95,7 +95,7 @@ export default function App() {
     const currentWord = guessState[currentGuess]
     for (let i = 0; i < currentWord.length; i ++) {
       if (currentWord[i] === targetWord[i]) {
-        //make the cell backgroundColor green
+        //Document.getElementById(i).style = {backgroundColor: '#00ff00'}
       } else if (target.includes(currentWord[i])) {
         //make the cell backgroundColor yellow
       } else {
