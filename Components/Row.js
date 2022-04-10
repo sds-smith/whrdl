@@ -77,7 +77,6 @@ const rowStyles = StyleSheet.create ({
         borderColor: 'gray',
         borderWidth: 1,
         textAlign: 'center',
-        lineHeight: '100%',
         alignItems: 'center',
         justifyContent: 'center',
         paddingTop: 15,
