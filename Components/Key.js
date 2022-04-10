@@ -4,9 +4,9 @@ import { StyleSheet, View, TouchableOpacity, Text } from 'react-native';
 const LetterKey = (props) => {
     const {title, onPress, keyboardMatch} = props
     return (
-        <View style={keyStyles.main}>
+        <View style={[keyStyles.main, {backgroundColor: keyboardMatch[title]}]}>
           <TouchableOpacity 
-            style={[keyStyles.button, {backgroundColor: keyboardMatch[title]}]}
+            style={keyStyles.button}
             onPress={()=>onPress(title)}
           >
               <Text style={{fontWeight: 'bold', fontSize: 15}}>
