@@ -1,16 +1,10 @@
 import * as React from 'react';
-import { useState, useEffect, useRef } from 'react'
-import { StyleSheet, View, TextInput, Button } from 'react-native';
+import { useState } from 'react'
+import { StyleSheet, View, Text } from 'react-native';
 
 const Row = (props) => {
 
-    const {guessId, guessState, currentGuess, currentLetter, onLetterEntry, onWordEntry} = props
-
-    const square0 = useRef()
-    const square1 = useRef()    
-    const square2 = useRef()
-    const square3 = useRef()
-    const square4 = useRef()
+    const {guessId, guessState, currentGuess, currentLetter, onLetterEntry} = props
 
     const [value0, setValue0] = useState('')    
     const [value1, setValue1] = useState('')
@@ -18,28 +12,22 @@ const Row = (props) => {
     const [value3, setValue3] = useState('')
     const [value4, setValue4] = useState('')
     
-    useEffect(() => {
-        square0.current.focus()
-    }, [currentGuess])
+
 
     const handleLetterEntry = (e) => {
         const value = e.target.value
         switch (currentLetter) {
             case 0 : 
                 setValue0(value)
-                square1.current.focus()
                 break
             case 1 : 
                 setValue1(value)
-                square2.current.focus()
                 break
             case 2 : 
                 setValue2(value)
-                square3.current.focus()
                 break
             case 3 : 
                 setValue3(value)
-                square4.current.focus()
                 break
             case 4 : 
                 setValue4(value)
@@ -50,89 +38,49 @@ const Row = (props) => {
         onLetterEntry(value)
     }
 
-    const handleWordEntry = () => {
-        onWordEntry()
-    }
-
-    const disabled = currentGuess !== guessId
     return (
   
         <View style={rowStyles.main} >
 
-            <TextInput 
-                ref={(square0)}
+            <Text 
+    
                 value={value0}
                 guessState={guessState}
                 currentGuess={currentGuess}
                 style={rowStyles.square}
-                autoCapitalize='characters'
-                autoCorrect={false}
-                autoComplete={false}
-                caretHidden
-                maxLength={1}
                 onChange={handleLetterEntry}
-                disabled={disabled}
-                autoFocus={currentGuess === guessId}
             />
 
-            <TextInput 
-                ref={square1}
+            <Text 
                 value={value1}
                 guessState={guessState}
                 currentGuess={currentGuess}
                 style={rowStyles.square}
-                autoCapitalize='characters'
-                autoCorrect={false}
-                autoComplete={false}
-                caretHidden
-                maxLength={1}
                 onChange={handleLetterEntry}
-                disabled={disabled}
             />
 
-            <TextInput
-                ref={square2} 
+            <Text 
                 value={value2}
                 guessState={guessState}
                 currentGuess={currentGuess}
                 style={rowStyles.square}
-                autoCapitalize='characters'
-                autoCorrect={false}
-                autoComplete={false}
-                caretHidden
-                maxLength={1}
                 onChange={handleLetterEntry}
-                disabled={disabled}
             />  
 
-            <TextInput
-                ref={square3} 
+            <Text 
                 value={value3}
                 guessState={guessState}
                 currentGuess={currentGuess}
                 style={rowStyles.square}
-                autoCapitalize='characters'
-                autoCorrect={false}
-                autoComplete={false}
-                caretHidden
-                maxLength={1}
                 onChange={handleLetterEntry}
-                disabled={disabled}
             />
 
-            <TextInput 
-                ref={square4}
+            <Text 
                 value={value4}
                 guessState={guessState}
                 currentGuess={currentGuess}
                 style={rowStyles.square}
-                autoCapitalize='characters'
-                autoCorrect={false}
-                autoComplete={false}
-                caretHidden
-                maxLength={1}
                 onChange={handleLetterEntry}
-                disabled={disabled}
             />
         </View>
     )
