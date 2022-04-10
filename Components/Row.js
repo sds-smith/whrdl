@@ -72,14 +72,14 @@ const rowStyles = StyleSheet.create ({
     square: {
         flex: 1,
         width: 50,
-        fontSize: 50,
+        fontSize: 40,
+        paddingTop: 5,
         marginHorizontal: 5,
         borderColor: 'gray',
         borderWidth: 1,
         textAlign: 'center',
         alignItems: 'center',
         justifyContent: 'center',
-        paddingTop: 15,
         backgroundColor: '#fafafa'
     }
 

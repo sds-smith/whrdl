@@ -21,7 +21,7 @@ const keyStyles = StyleSheet.create({
   main: {
     flex: 1,
     alignItems: 'center',
-    margin: 5,
+    margin: 4,
     backgroundColor: '#e6e6e6',
     borderRadius: 5
   },

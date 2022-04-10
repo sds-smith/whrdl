@@ -65,7 +65,7 @@ const boardStyles = StyleSheet.create ({
         flex: 6,
         alignItems: 'center',
         justifyContent: 'center',
-        width: '60%',
+        width: '80%',
     }
 
 })

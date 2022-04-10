@@ -73,6 +73,7 @@ const keyboardStyles = StyleSheet.create ({
         alignItems: 'center',
         justifyContent: 'center',
         justifyContent: 'center',
+        paddingHorizontal: 5,
         borderRadius: 10,   
         backgroundColor: '#e6e6e6'       
     },
