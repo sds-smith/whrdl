@@ -61,12 +61,12 @@ const keyboardStyles = StyleSheet.create ({
         marginHorizontal: 5,
         alignItems: 'center',
         justifyContent: 'center',
-        width: '100%',
+        //width: '100%',
     },
     row: {
         flex: 1,
         flexDirection: 'row',
-        width: '100%',
+        //width: '100%',
         alignItems: 'center',
         justifyContent: 'center',
         marginVertical: 5

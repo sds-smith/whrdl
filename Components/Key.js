@@ -19,15 +19,16 @@ const LetterKey = (props) => {
 
 const keyStyles = StyleSheet.create({
   main: {
-    height: '100%',
+    flex: 1,
+    // height: '100%',
     alignItems: 'center',
-    margin: 10,
+    margin: 5,
     backgroundColor: '#f2f2f2',
     borderRadius: 10
   },
   button: {
     paddingHorizontal: 20,
-    height: '100%',
+    // height: '100%',
     alignItems: 'center',
     justifyContent: 'center',
     justifyContent: 'center',
