@@ -8,15 +8,20 @@ import Keyboard from './Components/Keyboard'
 
 export default function App() {
   const board = {}
+  const matches = {}
   const guesses = ['guess1', 'guess2', 'guess3', 'guess4', 'guess5', 'guess6']
   guesses.forEach(guess => {
     board[guess] = ['','','','','']
+    matches[guess] = ['#fff','#fff','#fff','#fff','#fff']
   })
 
-  const [guessState, setGuessState] = useState(board)  
+  const [guessState, setGuessState] = useState(board) 
+  const [letterMatches, setLetterMatches] = useState(matches) 
   const [currentGuess, setCurrentGuess] = useState(guesses[0])
   const [currentLetter,setCurrentLetter] = useState(0)
   const [targetWord, setTargetWord] = useState('orate'.toUpperCase())
+
+  console.log('letterMatches', letterMatches)
 
   const handleLetterEntry = (letter) => {
     const guessArray = []
