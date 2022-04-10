@@ -19,25 +19,49 @@ export default function App() {
   const [targetWord, setTargetWord] = useState('orate'.toUpperCase())
 
   const handleLetterEntry = (letter) => {
-
+    const guessArray = []
     switch (currentGuess) {
       case guesses[0] : 
-        setGuessState(guessState => ({...guessState, guess1 : guessState.guess1.splice(currentLetter, 1, letter)}))
+        guessState.guess1.forEach(ltr => {
+          guessArray.push(ltr)
+        })
+        guessArray[currentLetter]=letter
+        setGuessState(guessState => ({...guessState, guess1 : guessArray}))
         break
       case guesses[1] : 
-        setGuessState(guessState => ({...guessState, guess2 : guessState.guess2.splice(currentLetter, 1, letter)}))
+        guessState.guess2.forEach(ltr => {
+          guessArray.push(ltr)
+        })
+        guessArray[currentLetter]=letter
+        setGuessState(guessState => ({...guessState, guess2 : guessArray}))
         break
       case guesses[2] : 
-        setGuessState(guessState => ({...guessState, guess3 : guessState.guess3.splice(currentLetter, 1, letter)}))
+        guessState.guess3.forEach(ltr => {
+          guessArray.push(ltr)
+        })
+        guessArray[currentLetter]=letter
+        setGuessState(guessState => ({...guessState, guess3 : guessArray}))
         break
       case guesses[3] : 
-        setGuessState(guessState => ({...guessState, guess4 : guessState.guess4.splice(currentLetter, 1, letter)}))
+        guessState.guess4.forEach(ltr => {
+          guessArray.push(ltr)
+        })
+        guessArray[currentLetter]=letter
+        setGuessState(guessState => ({...guessState, guess4 : guessArray}))
         break
       case guesses[4] : 
-        setGuessState(guessState => ({...guessState, guess5 : guessState.guess5.splice(currentLetter, 1, letter)}))
+        guessState.guess5.forEach(ltr => {
+          guessArray.push(ltr)
+        })
+        guessArray[currentLetter]=letter
+        setGuessState(guessState => ({...guessState, guess5 : guessArray}))
         break
-      case guesses[5] : 
-        setGuessState(guessState => ({...guessState, guess6 : guessState.guess6.splice(currentLetter, 1, letter)}))
+      case guesses[5] :
+        guessState.guess6.forEach(ltr => {
+          guessArray.push(ltr)
+        })
+        guessArray[currentLetter]=letter 
+        setGuessState(guessState => ({...guessState, guess6 : guessArray}))
         break 
       default :
         break   
@@ -87,7 +111,7 @@ export default function App() {
   const handleWordEntry = () => {
     const target = []
     for (let j = 0; j < target.length; j ++) {
-      target.push(target[j])
+      target.push(targetWord[j])
     }
     const currentWord = guessState[currentGuess]
     for (let i = 0; i < currentWord.length; i ++) {
@@ -99,7 +123,7 @@ export default function App() {
         //make the cell backgroundColor gray
       }
     }
-    if (guessState[currentGuess].join() === targetWord) {
+    if (guessState[currentGuess].join('') === targetWord) {
       window.alert('YOU WIN!')
     } else if (currentGuess === 'guess6') {
       window.alert('wha wha (sad trombone)')
