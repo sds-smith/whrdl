@@ -19,6 +19,7 @@ export default function App() {
   const [letterMatches, setLetterMatches] = useState(matches) 
   const [currentGuess, setCurrentGuess] = useState(guesses[0])
   const [currentLetter,setCurrentLetter] = useState(0)
+  const [headerMessage, setHeaderMessage] = useState('')
   const [targetWord, setTargetWord] = useState('orate'.toUpperCase())
 
   const handleLetterEntry = (letter) => {
@@ -137,9 +138,9 @@ export default function App() {
       }
     }
     if (guessState[currentGuess].join('') === targetWord) {
-      setTimeout(window.alert('YOU WIN!'),500)
+      setHeaderMessage(`YOU WIN IN ${currentGuess[5]} GUESSES!!`)
     } else if (currentGuess === 'guess6') {
-      window.alert('wha wha (sad trombone)')
+      setHeaderMessage('wha wha (sad trombone)')
     } else {
       const nextGuess = guesses[guesses.indexOf(currentGuess)+1]
       setCurrentGuess(nextGuess)
@@ -150,7 +151,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Header />
+      <Header headerMessage={headerMessage}/>
       <Board
         guessState={guessState}
         letterMatches={letterMatches}

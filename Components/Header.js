@@ -1,10 +1,11 @@
 import * as React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 
-const Header = () => {
+const Header = (props) => {
     return (
         <View style={headerStyles.main}>
             <Text style={headerStyles.text}>WHRDL</Text>
+            <Text>{props.headerMessage}</Text>
         </View>
     )
 }
