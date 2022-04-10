@@ -137,7 +137,7 @@ export default function App() {
       }
     }
     if (guessState[currentGuess].join('') === targetWord) {
-      window.alert('YOU WIN!')
+      setTimeout(window.alert('YOU WIN!'),500)
     } else if (currentGuess === 'guess6') {
       window.alert('wha wha (sad trombone)')
     } else {

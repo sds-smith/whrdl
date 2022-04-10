@@ -4,12 +4,13 @@ import  Row from './Row';
 
 const Board = (props) => {
 
-    const {guessState, currentGuess, currentLetter, handleLetterEntry, handleWordEntry} = props
+    const {guessState, letterMatches, currentGuess, currentLetter, handleLetterEntry, handleWordEntry} = props
 
     return (
         <View style={boardStyles.main}>
             <Row id={1} guessId={'guess1'} 
                 guessState={guessState}
+                letterMatches={letterMatches}
                 currentGuess={currentGuess}
                 currentLetter={currentLetter}
                 onLetterEntry={(letter)=> handleLetterEntry(letter)} 
@@ -17,6 +18,7 @@ const Board = (props) => {
             />
             <Row id={2} guessId={'guess2'}
                 guessState={guessState}
+                letterMatches={letterMatches}
                 currentGuess={currentGuess}
                 currentLetter={currentLetter}
                 onLetterEntry={(letter)=> handleLetterEntry(letter)} 
@@ -24,6 +26,7 @@ const Board = (props) => {
             />
             <Row id={3} guessId={'guess3'}
                 guessState={guessState}
+                letterMatches={letterMatches}
                 currentGuess={currentGuess}
                 currentLetter={currentLetter}
                 onLetterEntry={(letter)=> handleLetterEntry(letter)} 
@@ -31,6 +34,7 @@ const Board = (props) => {
             />
             <Row id={4} guessId={'guess4'}
                 guessState={guessState}
+                letterMatches={letterMatches}
                 currentGuess={currentGuess}
                 currentLetter={currentLetter}
                 onLetterEntry={(letter)=> handleLetterEntry(letter)} 
@@ -38,6 +42,7 @@ const Board = (props) => {
             />
             <Row id={5} guessId={'guess5'}
                 guessState={guessState}
+                letterMatches={letterMatches}
                 currentGuess={currentGuess}
                 currentLetter={currentLetter}
                 onLetterEntry={(letter)=> handleLetterEntry(letter)} 
@@ -45,6 +50,7 @@ const Board = (props) => {
             />  
             <Row id={6} guessId={'guess6'}
                 guessState={guessState}
+                letterMatches={letterMatches}
                 currentGuess={currentGuess}
                 currentLetter={currentLetter}
                 onLetterEntry={(letter)=> handleLetterEntry(letter)} 
