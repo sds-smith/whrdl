@@ -4,42 +4,42 @@ import LetterKey from './Key.js'
 
 const Keyboard = (props) => {
 
-    const {handleLetterEntry, handleDelete, handleWordEntry} = props
+    const {handleLetterEntry, handleDelete, handleWordEntry, keyboardMatch} = props
 
     return (
         <View style={keyboardStyles.main}>
             <View style={keyboardStyles.row}>
-                <LetterKey  title='Q' onPress={(letter)=>handleLetterEntry(letter)}/>
-                <LetterKey  title='W' onPress={(letter)=>handleLetterEntry(letter)}/>
-                <LetterKey  title='E' onPress={(letter)=>handleLetterEntry(letter)}/>
-                <LetterKey  title='R' onPress={(letter)=>handleLetterEntry(letter)}/>
-                <LetterKey  title='T' onPress={(letter)=>handleLetterEntry(letter)}/>
-                <LetterKey  title='Y' onPress={(letter)=>handleLetterEntry(letter)}/>
-                <LetterKey  title='U' onPress={(letter)=>handleLetterEntry(letter)}/>
-                <LetterKey  title='I' onPress={(letter)=>handleLetterEntry(letter)}/>
-                <LetterKey  title='O' onPress={(letter)=>handleLetterEntry(letter)}/>
-                <LetterKey  title='P' onPress={(letter)=>handleLetterEntry(letter)}/>               
+                <LetterKey  title='Q' keyboardMatch={keyboardMatch} onPress={(letter)=>handleLetterEntry(letter)}/>
+                <LetterKey  title='W' keyboardMatch={keyboardMatch} onPress={(letter)=>handleLetterEntry(letter)}/>
+                <LetterKey  title='E' keyboardMatch={keyboardMatch} onPress={(letter)=>handleLetterEntry(letter)}/>
+                <LetterKey  title='R' keyboardMatch={keyboardMatch} onPress={(letter)=>handleLetterEntry(letter)}/>
+                <LetterKey  title='T' keyboardMatch={keyboardMatch} onPress={(letter)=>handleLetterEntry(letter)}/>
+                <LetterKey  title='Y' keyboardMatch={keyboardMatch} onPress={(letter)=>handleLetterEntry(letter)}/>
+                <LetterKey  title='U' keyboardMatch={keyboardMatch} onPress={(letter)=>handleLetterEntry(letter)}/>
+                <LetterKey  title='I' keyboardMatch={keyboardMatch} onPress={(letter)=>handleLetterEntry(letter)}/>
+                <LetterKey  title='O' keyboardMatch={keyboardMatch} onPress={(letter)=>handleLetterEntry(letter)}/>
+                <LetterKey  title='P' keyboardMatch={keyboardMatch} onPress={(letter)=>handleLetterEntry(letter)}/>               
             </View>
             <View style={keyboardStyles.row}>
-                <LetterKey  title='A' onPress={(letter)=>handleLetterEntry(letter)}/>
-                <LetterKey  title='S' onPress={(letter)=>handleLetterEntry(letter)}/>
-                <LetterKey  title='D' onPress={(letter)=>handleLetterEntry(letter)}/>
-                <LetterKey  title='F' onPress={(letter)=>handleLetterEntry(letter)}/>
-                <LetterKey  title='G' onPress={(letter)=>handleLetterEntry(letter)}/>
-                <LetterKey  title='H' onPress={(letter)=>handleLetterEntry(letter)}/>
-                <LetterKey  title='J' onPress={(letter)=>handleLetterEntry(letter)}/>
-                <LetterKey  title='K' onPress={(letter)=>handleLetterEntry(letter)}/>
-                <LetterKey  title='L' onPress={(letter)=>handleLetterEntry(letter)}/>
+                <LetterKey  title='A' keyboardMatch={keyboardMatch} onPress={(letter)=>handleLetterEntry(letter)}/>
+                <LetterKey  title='S' keyboardMatch={keyboardMatch} onPress={(letter)=>handleLetterEntry(letter)}/>
+                <LetterKey  title='D' keyboardMatch={keyboardMatch} onPress={(letter)=>handleLetterEntry(letter)}/>
+                <LetterKey  title='F' keyboardMatch={keyboardMatch} onPress={(letter)=>handleLetterEntry(letter)}/>
+                <LetterKey  title='G' keyboardMatch={keyboardMatch} onPress={(letter)=>handleLetterEntry(letter)}/>
+                <LetterKey  title='H' keyboardMatch={keyboardMatch} onPress={(letter)=>handleLetterEntry(letter)}/>
+                <LetterKey  title='J' keyboardMatch={keyboardMatch} onPress={(letter)=>handleLetterEntry(letter)}/>
+                <LetterKey  title='K' keyboardMatch={keyboardMatch} onPress={(letter)=>handleLetterEntry(letter)}/>
+                <LetterKey  title='L' keyboardMatch={keyboardMatch} onPress={(letter)=>handleLetterEntry(letter)}/>
             </View>
             <View style={keyboardStyles.row}>
                 <FunctionKey  title='ENTER' handlePress={handleWordEntry}/>
-                <LetterKey  title='Z' onPress={(letter)=>handleLetterEntry(letter)}/>
-                <LetterKey  title='X' onPress={(letter)=>handleLetterEntry(letter)}/>
-                <LetterKey  title='C' onPress={(letter)=>handleLetterEntry(letter)}/>
-                <LetterKey  title='V' onPress={(letter)=>handleLetterEntry(letter)}/>
-                <LetterKey  title='B' onPress={(letter)=>handleLetterEntry(letter)}/>
-                <LetterKey  title='N' onPress={(letter)=>handleLetterEntry(letter)}/>
-                <LetterKey  title='M' onPress={(letter)=>handleLetterEntry(letter)}/>
+                <LetterKey  title='Z' keyboardMatch={keyboardMatch} onPress={(letter)=>handleLetterEntry(letter)}/>
+                <LetterKey  title='X' keyboardMatch={keyboardMatch} onPress={(letter)=>handleLetterEntry(letter)}/>
+                <LetterKey  title='C' keyboardMatch={keyboardMatch} onPress={(letter)=>handleLetterEntry(letter)}/>
+                <LetterKey  title='V' keyboardMatch={keyboardMatch} onPress={(letter)=>handleLetterEntry(letter)}/>
+                <LetterKey  title='B' keyboardMatch={keyboardMatch} onPress={(letter)=>handleLetterEntry(letter)}/>
+                <LetterKey  title='N' keyboardMatch={keyboardMatch} onPress={(letter)=>handleLetterEntry(letter)}/>
+                <LetterKey  title='M' keyboardMatch={keyboardMatch} onPress={(letter)=>handleLetterEntry(letter)}/>
                 <FunctionKey className={'large'} title='&#9003;' handlePress={handleDelete} />
             </View>
         </View>

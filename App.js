@@ -129,16 +129,19 @@ export default function App() {
     for (let i = 0; i < currentWord.length; i ++) {
       if (currentWord[i] === target[i]) {
         currentMatches[i] = '#0f0'
+        keyboardMatch[currentWord[i]] = '#0f0'
         setLetterMatches((letterMatches) => ({
           ...letterMatches, currentGuess : currentMatches
         }))
       } else if (target.includes(currentWord[i])) {
         currentMatches[i] = '#ff0'
+        keyboardMatch[currentWord[i]] = '#ff0'
         setLetterMatches((letterMatches) => ({
           ...letterMatches, currentGuess : currentMatches
         }))
       } else {
-        currentMatches[i] = '#a9a9a9'
+        currentMatches[i] = '#999'
+        keyboardMatch[currentWord[i]] = '#999'
         setLetterMatches((letterMatches) => ({
           ...letterMatches, currentGuess : currentMatches
         }))
