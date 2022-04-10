@@ -10,7 +10,7 @@ export default function App() {
   const board = {}
   const guesses = ['guess1', 'guess2', 'guess3', 'guess4', 'guess5', 'guess6']
   guesses.forEach(guess => {
-    board[guess] = []
+    board[guess] = ['','','','','']
   })
 
   const [guessState, setGuessState] = useState(board)  
@@ -22,22 +22,22 @@ export default function App() {
 
     switch (currentGuess) {
       case guesses[0] : 
-        setGuessState(guessState => ({...guessState, guess1 : guessState.guess1 + letter}))
+        setGuessState(guessState => ({...guessState, guess1 : guessState.guess1.splice(currentLetter, 1, letter)}))
         break
       case guesses[1] : 
-        setGuessState(guessState => ({...guessState, guess2 : guessState.guess2 + letter}))
+        setGuessState(guessState => ({...guessState, guess2 : guessState.guess2.splice(currentLetter, 1, letter)}))
         break
       case guesses[2] : 
-        setGuessState(guessState => ({...guessState, guess3 : guessState.guess3 + letter}))
+        setGuessState(guessState => ({...guessState, guess3 : guessState.guess3.splice(currentLetter, 1, letter)}))
         break
       case guesses[3] : 
-        setGuessState(guessState => ({...guessState, guess4 : guessState.guess4 + letter}))
+        setGuessState(guessState => ({...guessState, guess4 : guessState.guess4.splice(currentLetter, 1, letter)}))
         break
       case guesses[4] : 
-        setGuessState(guessState => ({...guessState, guess5 : guessState.guess5 + letter}))
+        setGuessState(guessState => ({...guessState, guess5 : guessState.guess5.splice(currentLetter, 1, letter)}))
         break
       case guesses[5] : 
-        setGuessState(guessState => ({...guessState, guess6 : guessState.guess6 + letter}))
+        setGuessState(guessState => ({...guessState, guess6 : guessState.guess6.splice(currentLetter, 1, letter)}))
         break 
       default :
         break   
