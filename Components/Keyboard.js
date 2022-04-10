@@ -4,7 +4,7 @@ import LetterKey from './Key.js'
 
 const Keyboard = (props) => {
 
-    const {handleWordEntry} = props
+    const {handleLetterEntry, handleWordEntry} = props
 
     return (
         <View style={keyboardStyles.main}>
