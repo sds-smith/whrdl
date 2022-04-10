@@ -9,7 +9,7 @@ const LetterKey = (props) => {
             style={keyStyles.button}
             onPress={()=>onPress(title)}
           >
-              <Text style={{fontWeight: 'bold', fontSize: 20}}>
+              <Text style={{fontWeight: 'bold', fontSize: 15}}>
                 {title}
               </Text>
           </TouchableOpacity>   
@@ -20,19 +20,16 @@ const LetterKey = (props) => {
 const keyStyles = StyleSheet.create({
   main: {
     flex: 1,
-    // height: '100%',
     alignItems: 'center',
     margin: 5,
-    backgroundColor: '#f2f2f2',
-    borderRadius: 10
+    backgroundColor: '#e6e6e6',
+    borderRadius: 5
   },
   button: {
-    paddingHorizontal: 20,
-    // height: '100%',
+    height: '100%',
     alignItems: 'center',
     justifyContent: 'center',
     justifyContent: 'center',
-    borderRadius: 10,
   }
 })
 

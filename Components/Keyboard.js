@@ -61,34 +61,27 @@ const keyboardStyles = StyleSheet.create ({
         marginHorizontal: 5,
         alignItems: 'center',
         justifyContent: 'center',
-        //width: '100%',
     },
     row: {
         flex: 1,
         flexDirection: 'row',
-        //width: '100%',
         alignItems: 'center',
         justifyContent: 'center',
-        marginVertical: 5
-    },
-    letterButton: {
-        flex: 1,
     },
     funcButton: {
-        paddingHorizontal: 20,
         height: '100%',
         alignItems: 'center',
         justifyContent: 'center',
         justifyContent: 'center',
         borderRadius: 10,   
-        backgroundColor: '#f2f2f2'       
+        backgroundColor: '#e6e6e6'       
     },
     buttonText: {
         fontWeight: 'bold',
-        fontSize: 20
+        fontSize: 15
     },
     buttonTextLg: {
-        fontSize: 50
+        fontSize: 40
     }
 })
 
