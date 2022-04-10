@@ -51,32 +51,32 @@ export default function App() {
     switch (currentGuess) {
       case 'guess1' : 
         currentWord = guessState.guess1
-        currentWord = currentWord.slice(0, currentLetter)
+        currentWord = currentWord.splice(currentLetter, 1)
         setGuessState(guessState => ({...guessState, guess1 : currentWord}))
         break
       case 'guess2' : 
         currentWord = guessState.guess2
-        currentWord = currentWord.slice(0, currentLetter)
+        currentWord = currentWord.splice(currentLetter, 1)
         setGuessState(guessState => ({...guessState, guess2 : currentWord}))
         break
       case 'guess3' : 
         currentWord = guessState.guess3
-        currentWord = currentWord.slice(0, currentLetter)
+        currentWord = currentWord.splice(currentLetter, 1)
         setGuessState(guessState => ({...guessState, guess3 : currentWord}))
         break
       case 'guess4' : 
         currentWord = guessState.guess4
-        currentWord = currentWord.slice(0, currentLetter)
+        currentWord = currentWord.splice(currentLetter, 1)
         setGuessState(guessState => ({...guessState, guess4 : currentWord}))
         break
       case 'guess5' : 
         currentWord = guessState.guess5
-        currentWord = currentWord.slice(0, currentLetter)
+        currentWord = currentWord.splice(currentLetter, 1)
         setGuessState(guessState => ({...guessState, guess5 : currentWord}))
       break
       case 'guess6' : 
         currentWord = guessState.guess6
-        currentWord = currentWord.slice(0, currentLetter)
+        currentWord = currentWord.splice(currentLetter, 1)
         setGuessState(guessState => ({...guessState, guess6 : currentWord}))
         break 
       default :
@@ -86,12 +86,12 @@ export default function App() {
 
   const handleWordEntry = () => {
     const target = []
-    for (let j = 0; j < targetWord.length; j ++) {
-      target.push(targetWord[j])
+    for (let j = 0; j < target.length; j ++) {
+      target.push(target[j])
     }
     const currentWord = guessState[currentGuess]
     for (let i = 0; i < currentWord.length; i ++) {
-      if (currentWord[i] === targetWord[i]) {
+      if (currentWord[i] === target[i]) {
         //Document.getElementById(i).style = {backgroundColor: '#00ff00'}
       } else if (target.includes(currentWord[i])) {
         //make the cell backgroundColor yellow
@@ -99,7 +99,7 @@ export default function App() {
         //make the cell backgroundColor gray
       }
     }
-    if (guessState[currentGuess] === targetWord) {
+    if (guessState[currentGuess].join() === targetWord) {
       window.alert('YOU WIN!')
     } else if (currentGuess === 'guess6') {
       window.alert('wha wha (sad trombone)')

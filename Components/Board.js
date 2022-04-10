@@ -4,9 +4,7 @@ import  Row from './Row';
 
 const Board = (props) => {
 
-    const {focus, guessState, currentGuess, currentLetter, handleLetterEntry, handleWordEntry} = props
-
-    
+    const {guessState, currentGuess, currentLetter, handleLetterEntry, handleWordEntry} = props
 
     return (
         <View style={boardStyles.main}>

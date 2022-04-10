@@ -7,11 +7,11 @@ const Row = (props) => {
 
     const wordGuess = guessState[guessId]
 
-    const value0 = wordGuess[0] ? wordGuess[0] : ''
-    const value1 = wordGuess[1] ? wordGuess[1] : ''
-    const value2 = wordGuess[2] ? wordGuess[2] : ''
-    const value3 = wordGuess[3] ? wordGuess[3] : ''
-    const value4 = wordGuess[4] ? wordGuess[4] : ''
+    const value0 = wordGuess[0]
+    const value1 = wordGuess[1]
+    const value2 = wordGuess[2]
+    const value3 = wordGuess[3]
+    const value4 = wordGuess[4]
 
     return (
   
