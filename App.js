@@ -19,7 +19,7 @@ export default function App() {
   const [guessState, setGuessState] = useState(board)  
   const [currentGuess, setCurrentGuess] = useState('guess1')
   const [currentLetter,setCurrentLetter] = useState(0)
-  const [targetWord, setTargetWord] = useState('orate')
+  const [targetWord, setTargetWord] = useState('orate'.toUpperCase())
 
   const handleLetterEntry = (letter) => {
 
@@ -88,7 +88,21 @@ export default function App() {
   }
 
   const handleWordEntry = () => {
-    if (guessState[currentGuess].toLowerCase() === targetWord.toLowerCase()) {
+    const target = []
+    for (let j = 0; j < targetWord.length; j ++) {
+      target.push(targetWord[j])
+    }
+    const currentWord = guessState[currentGuess]
+    for (let i = 0; i < currentWord.length; i ++) {
+      if (currentWord[i] === targetWord[i]) {
+        //make the cell backgroundColor green
+      } else if (target.includes(currentWord[i])) {
+        //make the cell backgroundColor yellow
+      } else {
+        //make the cell backgroundColor gray
+      }
+    }
+    if (guessState[currentGuess] === targetWord) {
       window.alert('YOU WIN!')
     } else if (currentGuess === 'guess6') {
       window.alert('wha wha (sad trombone)')
