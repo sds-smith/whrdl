@@ -22,7 +22,6 @@ export default function App() {
   const [targetWord, setTargetWord] = useState('orate')
 
   const handleLetterEntry = (letter) => {
-    setCurrentLetter(currentLetter => currentLetter + 1)
 
     switch (true) {
       case currentGuess === 'guess1' : 
@@ -46,16 +45,46 @@ export default function App() {
       default :
         break   
     }
+    setCurrentLetter(currentLetter => currentLetter + 1)
   }
 
   const handleDelete = () => {
     setCurrentLetter(currentLetter => currentLetter - 1)
-    let currentWord = guessState[currentGuess]
-    console.log('currentWord before edit', currentWord)
-    currentWord = currentWord.slice(0,currentLetter)
-    console.log('currentWord after edit', currentWord)
-    setGuessState(guessState => ({...guessState, currentGuess : currentWord}))
-
+    let currentWord
+    switch (currentGuess) {
+      case 'guess1' : 
+        currentWord = guessState.guess1
+        currentWord = currentWord.slice(0, currentLetter)
+        setGuessState(guessState => ({...guessState, guess1 : currentWord}))
+        break
+      case 'guess2' : 
+        currentWord = guessState.guess2
+        currentWord = currentWord.slice(0, currentLetter)
+        setGuessState(guessState => ({...guessState, guess2 : currentWord}))
+        break
+      case 'guess3' : 
+        currentWord = guessState.guess3
+        currentWord = currentWord.slice(0, currentLetter)
+        setGuessState(guessState => ({...guessState, guess3 : currentWord}))
+        break
+      case 'guess4' : 
+        currentWord = guessState.guess4
+        currentWord = currentWord.slice(0, currentLetter)
+        setGuessState(guessState => ({...guessState, guess4 : currentWord}))
+        break
+      case 'guess5' : 
+        currentWord = guessState.guess5
+        currentWord = currentWord.slice(0, currentLetter)
+        setGuessState(guessState => ({...guessState, guess5 : currentWord}))
+      break
+      case 'guess6' : 
+        currentWord = guessState.guess6
+        currentWord = currentWord.slice(0, currentLetter)
+        setGuessState(guessState => ({...guessState, guess6 : currentWord}))
+        break 
+      default :
+        break   
+    }
   }
 
   const handleWordEntry = () => {
