@@ -113,17 +113,27 @@ export default function App() {
 
   const handleWordEntry = () => {
     const target = []
-    for (let j = 0; j < target.length; j ++) {
+    for (let j = 0; j < targetWord.length; j ++) {
       target.push(targetWord[j])
     }
     const currentWord = guessState[currentGuess]
+    const currentMatches = letterMatches[currentGuess]
     for (let i = 0; i < currentWord.length; i ++) {
       if (currentWord[i] === target[i]) {
-        setLetterMatches()
+        currentMatches[i] = '#0f0'
+        setLetterMatches((letterMatches) => ({
+          ...letterMatches, currentGuess : currentMatches
+        }))
       } else if (target.includes(currentWord[i])) {
-        //setLetterMatches(letterMatches[currentGuess][i]='#ff0')
+        currentMatches[i] = '#ff0'
+        setLetterMatches((letterMatches) => ({
+          ...letterMatches, currentGuess : currentMatches
+        }))
       } else {
-        //setLetterMatches(letterMatches[currentGuess][i]='#a9a9a9')
+        currentMatches[i] = '#a9a9a9'
+        setLetterMatches((letterMatches) => ({
+          ...letterMatches, currentGuess : currentMatches
+        }))
       }
     }
     if (guessState[currentGuess].join('') === targetWord) {
