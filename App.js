@@ -14,13 +14,20 @@ export default function App() {
     board[guess] = ['','','','','']
     matches[guess] = ['#fff','#fff','#fff','#fff','#fff']
   })
-
+  const keyMatches = {}
+  const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+  for (let i = 0; i < letters.length; i ++) {
+    const letter = letters[i]
+    keyMatches[letter] = '#e6e6e6'
+  }
   const [guessState, setGuessState] = useState(board) 
   const [letterMatches, setLetterMatches] = useState(matches) 
+  const [keyboardMatch, setKeyboardMatch] = useState(keyMatches)
   const [currentGuess, setCurrentGuess] = useState(guesses[0])
   const [currentLetter,setCurrentLetter] = useState(0)
   const [headerMessage, setHeaderMessage] = useState('')
   const [targetWord, setTargetWord] = useState('orate'.toUpperCase())
+  console.log(keyboardMatch)
 
   const handleLetterEntry = (letter) => {
     const guessArray = []
@@ -164,6 +171,7 @@ export default function App() {
         handleWordEntry={handleWordEntry} 
         handleLetterEntry={handleLetterEntry}
         handleDelete={handleDelete}
+        keyboardMatch={keyboardMatch}
       />
     </View>
   );
