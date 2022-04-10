@@ -48,6 +48,16 @@ export default function App() {
     }
   }
 
+  const handleDelete = () => {
+    setCurrentLetter(currentLetter => currentLetter - 1)
+    let currentWord = guessState[currentGuess]
+    console.log('currentWord before edit', currentWord)
+    currentWord = currentWord.slice(0,currentLetter)
+    console.log('currentWord after edit', currentWord)
+    setGuessState(guessState => ({...guessState, currentGuess : currentWord}))
+
+  }
+
   const handleWordEntry = () => {
     if (guessState[currentGuess].toLowerCase() === targetWord.toLowerCase()) {
       window.alert('YOU WIN!')
@@ -74,6 +84,7 @@ export default function App() {
       <Keyboard 
         handleWordEntry={handleWordEntry} 
         handleLetterEntry={handleLetterEntry}
+        handleDelete={handleDelete}
       />
     </View>
   );

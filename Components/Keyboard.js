@@ -4,43 +4,43 @@ import LetterKey from './Key.js'
 
 const Keyboard = (props) => {
 
-    const {handleLetterEntry, handleWordEntry} = props
+    const {handleLetterEntry, handleDelete, handleWordEntry} = props
 
     return (
         <View style={keyboardStyles.main}>
             <View style={keyboardStyles.row}>
-                <LetterKey  title='Q' />
-                <LetterKey  title='W' />
-                <LetterKey  title='E' />
-                <LetterKey  title='R' />
-                <LetterKey  title='T' />
-                <LetterKey  title='Y' />
-                <LetterKey  title='U' />
-                <LetterKey  title='I' />
-                <LetterKey  title='O' />
-                <LetterKey  title='P' />               
+                <LetterKey  title='Q' onPress={(letter)=>handleLetterEntry(letter)}/>
+                <LetterKey  title='W' onPress={(letter)=>handleLetterEntry(letter)}/>
+                <LetterKey  title='E' onPress={(letter)=>handleLetterEntry(letter)}/>
+                <LetterKey  title='R' onPress={(letter)=>handleLetterEntry(letter)}/>
+                <LetterKey  title='T' onPress={(letter)=>handleLetterEntry(letter)}/>
+                <LetterKey  title='Y' onPress={(letter)=>handleLetterEntry(letter)}/>
+                <LetterKey  title='U' onPress={(letter)=>handleLetterEntry(letter)}/>
+                <LetterKey  title='I' onPress={(letter)=>handleLetterEntry(letter)}/>
+                <LetterKey  title='O' onPress={(letter)=>handleLetterEntry(letter)}/>
+                <LetterKey  title='P' onPress={(letter)=>handleLetterEntry(letter)}/>               
             </View>
             <View style={keyboardStyles.row}>
-                <LetterKey  title='A' />
-                <LetterKey  title='S' />
-                <LetterKey  title='D' />
-                <LetterKey  title='F' />
-                <LetterKey  title='G' />
-                <LetterKey  title='H' />
-                <LetterKey  title='J' />
-                <LetterKey  title='K' />
-                <LetterKey  title='L' />
+                <LetterKey  title='A' onPress={(letter)=>handleLetterEntry(letter)}/>
+                <LetterKey  title='S' onPress={(letter)=>handleLetterEntry(letter)}/>
+                <LetterKey  title='D' onPress={(letter)=>handleLetterEntry(letter)}/>
+                <LetterKey  title='F' onPress={(letter)=>handleLetterEntry(letter)}/>
+                <LetterKey  title='G' onPress={(letter)=>handleLetterEntry(letter)}/>
+                <LetterKey  title='H' onPress={(letter)=>handleLetterEntry(letter)}/>
+                <LetterKey  title='J' onPress={(letter)=>handleLetterEntry(letter)}/>
+                <LetterKey  title='K' onPress={(letter)=>handleLetterEntry(letter)}/>
+                <LetterKey  title='L' onPress={(letter)=>handleLetterEntry(letter)}/>
             </View>
             <View style={keyboardStyles.row}>
                 <FunctionKey  title='ENTER' handlePress={handleWordEntry}/>
-                <LetterKey  title='Z' />
-                <LetterKey  title='X' />
-                <LetterKey  title='C' />
-                <LetterKey  title='V' />
-                <LetterKey  title='B' />
-                <LetterKey  title='N' />
-                <LetterKey  title='M' />
-                <FunctionKey className={'large'} title='&#9003;' />
+                <LetterKey  title='Z' onPress={(letter)=>handleLetterEntry(letter)}/>
+                <LetterKey  title='X' onPress={(letter)=>handleLetterEntry(letter)}/>
+                <LetterKey  title='C' onPress={(letter)=>handleLetterEntry(letter)}/>
+                <LetterKey  title='V' onPress={(letter)=>handleLetterEntry(letter)}/>
+                <LetterKey  title='B' onPress={(letter)=>handleLetterEntry(letter)}/>
+                <LetterKey  title='N' onPress={(letter)=>handleLetterEntry(letter)}/>
+                <LetterKey  title='M' onPress={(letter)=>handleLetterEntry(letter)}/>
+                <FunctionKey className={'large'} title='&#9003;' handlePress={handleDelete} />
             </View>
         </View>
     )
