@@ -21,8 +21,6 @@ export default function App() {
   const [currentLetter,setCurrentLetter] = useState(0)
   const [targetWord, setTargetWord] = useState('orate'.toUpperCase())
 
-  console.log('letterMatches', letterMatches)
-
   const handleLetterEntry = (letter) => {
     const guessArray = []
     switch (currentGuess) {
@@ -121,11 +119,11 @@ export default function App() {
     const currentWord = guessState[currentGuess]
     for (let i = 0; i < currentWord.length; i ++) {
       if (currentWord[i] === target[i]) {
-        //Document.getElementById(i).style = {backgroundColor: '#00ff00'}
+        setLetterMatches()
       } else if (target.includes(currentWord[i])) {
-        //make the cell backgroundColor yellow
+        //setLetterMatches(letterMatches[currentGuess][i]='#ff0')
       } else {
-        //make the cell backgroundColor gray
+        //setLetterMatches(letterMatches[currentGuess][i]='#a9a9a9')
       }
     }
     if (guessState[currentGuess].join('') === targetWord) {
@@ -145,6 +143,7 @@ export default function App() {
       <Header />
       <Board
         guessState={guessState}
+        letterMatches={letterMatches}
         currentGuess={currentGuess}
         currentLetter={currentLetter}
         handleLetterEntry={handleLetterEntry}
