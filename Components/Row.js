@@ -17,35 +17,40 @@ const Row = (props) => {
   
         <View style={rowStyles.main} >
 
-            <Text    
+            <Text
+                id={0}    
                 value={value0}
                 guessState={guessState}
                 currentGuess={currentGuess}
                 style={rowStyles.square}
             >{value0}</Text>
 
-            <Text 
+            <Text
+                id={1} 
                 value={value1}
                 guessState={guessState}
                 currentGuess={currentGuess}
                 style={rowStyles.square}
             >{value1}</Text>
 
-            <Text 
+            <Text
+                id={2} 
                 value={value2}
                 guessState={guessState}
                 currentGuess={currentGuess}
                 style={rowStyles.square}
             >{value2}</Text>  
 
-            <Text 
+            <Text
+                id={3} 
                 value={value3}
                 guessState={guessState}
                 currentGuess={currentGuess}
                 style={rowStyles.square}
             >{value3}</Text>
 
-            <Text 
+            <Text
+                id={4} 
                 value={value4}
                 guessState={guessState}
                 currentGuess={currentGuess}
