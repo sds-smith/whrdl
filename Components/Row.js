@@ -3,15 +3,15 @@ import { StyleSheet, View, Text } from 'react-native';
 
 const Row = (props) => {
 
-    const {guessId, guessState, currentGuess, currentLetter, onLetterEntry} = props
+    const {guessId, guessState, letterMatches, currentGuess, currentLetter, onLetterEntry} = props
 
     const wordGuess = guessState[guessId]
 
-    const value0 = wordGuess[0] ? wordGuess[0] : ''
-    const value1 = wordGuess[1] ? wordGuess[1] : ''
-    const value2 = wordGuess[2] ? wordGuess[2] : ''
-    const value3 = wordGuess[3] ? wordGuess[3] : ''
-    const value4 = wordGuess[4] ? wordGuess[4] : ''
+    const value0 = wordGuess[0]
+    const value1 = wordGuess[1]
+    const value2 = wordGuess[2]
+    const value3 = wordGuess[3]
+    const value4 = wordGuess[4]
 
     return (
   
@@ -22,7 +22,7 @@ const Row = (props) => {
                 value={value0}
                 guessState={guessState}
                 currentGuess={currentGuess}
-                style={rowStyles.square}
+                style={[rowStyles.square, {backgroundColor: letterMatches[guessId][0]}]}
             >{value0}</Text>
 
             <Text
@@ -30,7 +30,7 @@ const Row = (props) => {
                 value={value1}
                 guessState={guessState}
                 currentGuess={currentGuess}
-                style={rowStyles.square}
+                style={[rowStyles.square, {backgroundColor: letterMatches[guessId][1]}]}
             >{value1}</Text>
 
             <Text
@@ -38,7 +38,7 @@ const Row = (props) => {
                 value={value2}
                 guessState={guessState}
                 currentGuess={currentGuess}
-                style={rowStyles.square}
+                style={[rowStyles.square, {backgroundColor: letterMatches[guessId][2]}]}
             >{value2}</Text>  
 
             <Text
@@ -46,7 +46,7 @@ const Row = (props) => {
                 value={value3}
                 guessState={guessState}
                 currentGuess={currentGuess}
-                style={rowStyles.square}
+                style={[rowStyles.square, {backgroundColor: letterMatches[guessId][3]}]}
             >{value3}</Text>
 
             <Text
@@ -54,7 +54,7 @@ const Row = (props) => {
                 value={value4}
                 guessState={guessState}
                 currentGuess={currentGuess}
-                style={rowStyles.square}
+                style={[rowStyles.square, {backgroundColor: letterMatches[guessId][4]}]}
             >{value4}</Text>
         </View>
     )
@@ -80,7 +80,8 @@ const rowStyles = StyleSheet.create ({
         lineHeight: '100%',
         alignItems: 'center',
         justifyContent: 'center',
-        paddingTop: 15
+        paddingTop: 15,
+        backgroundColor: '#fafafa'
     }
 
 })
