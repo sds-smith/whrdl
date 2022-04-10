@@ -2,10 +2,17 @@ import * as React from 'react';
 import { StyleSheet, View, TouchableOpacity, Text } from 'react-native';
 
 const LetterKey = (props) => {
-    const {title} = props
+    const {title, onPress} = props
     return (
         <View style={keyStyles.main}>
-          <TouchableOpacity style={keyStyles.button}><Text style={{fontWeight: 'bold', fontSize: 20}}>{title}</Text></TouchableOpacity>   
+          <TouchableOpacity 
+            style={keyStyles.button}
+            onPress={()=>onPress(title)}
+          >
+              <Text style={{fontWeight: 'bold', fontSize: 20}}>
+                {title}
+              </Text>
+          </TouchableOpacity>   
         </View>
     )
 }

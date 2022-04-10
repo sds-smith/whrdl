@@ -19,10 +19,9 @@ export default function App() {
   const [guessState, setGuessState] = useState(board)  
   const [currentGuess, setCurrentGuess] = useState('guess1')
   const [currentLetter,setCurrentLetter] = useState(0)
-  const [targetWord, setTargetWord] = useState('orate')
+  const [targetWord, setTargetWord] = useState('orate'.toUpperCase())
 
   const handleLetterEntry = (letter) => {
-    setCurrentLetter(currentLetter => currentLetter + 1)
 
     switch (true) {
       case currentGuess === 'guess1' : 
@@ -46,10 +45,64 @@ export default function App() {
       default :
         break   
     }
+    setCurrentLetter(currentLetter => currentLetter + 1)
+  }
+
+  const handleDelete = () => {
+    setCurrentLetter(currentLetter => currentLetter - 1)
+    let currentWord
+    switch (currentGuess) {
+      case 'guess1' : 
+        currentWord = guessState.guess1
+        currentWord = currentWord.slice(0, currentLetter)
+        setGuessState(guessState => ({...guessState, guess1 : currentWord}))
+        break
+      case 'guess2' : 
+        currentWord = guessState.guess2
+        currentWord = currentWord.slice(0, currentLetter)
+        setGuessState(guessState => ({...guessState, guess2 : currentWord}))
+        break
+      case 'guess3' : 
+        currentWord = guessState.guess3
+        currentWord = currentWord.slice(0, currentLetter)
+        setGuessState(guessState => ({...guessState, guess3 : currentWord}))
+        break
+      case 'guess4' : 
+        currentWord = guessState.guess4
+        currentWord = currentWord.slice(0, currentLetter)
+        setGuessState(guessState => ({...guessState, guess4 : currentWord}))
+        break
+      case 'guess5' : 
+        currentWord = guessState.guess5
+        currentWord = currentWord.slice(0, currentLetter)
+        setGuessState(guessState => ({...guessState, guess5 : currentWord}))
+      break
+      case 'guess6' : 
+        currentWord = guessState.guess6
+        currentWord = currentWord.slice(0, currentLetter)
+        setGuessState(guessState => ({...guessState, guess6 : currentWord}))
+        break 
+      default :
+        break   
+    }
   }
 
   const handleWordEntry = () => {
-    if (guessState[currentGuess].toLowerCase() === targetWord.toLowerCase()) {
+    const target = []
+    for (let j = 0; j < targetWord.length; j ++) {
+      target.push(targetWord[j])
+    }
+    const currentWord = guessState[currentGuess]
+    for (let i = 0; i < currentWord.length; i ++) {
+      if (currentWord[i] === targetWord[i]) {
+        //Document.getElementById(i).style = {backgroundColor: '#00ff00'}
+      } else if (target.includes(currentWord[i])) {
+        //make the cell backgroundColor yellow
+      } else {
+        //make the cell backgroundColor gray
+      }
+    }
+    if (guessState[currentGuess] === targetWord) {
       window.alert('YOU WIN!')
     } else if (currentGuess === 'guess6') {
       window.alert('wha wha (sad trombone)')
@@ -71,7 +124,11 @@ export default function App() {
         handleLetterEntry={handleLetterEntry}
         handleWordEntry={handleWordEntry}
       />
-      <Keyboard handleWordEntry={handleWordEntry} />
+      <Keyboard 
+        handleWordEntry={handleWordEntry} 
+        handleLetterEntry={handleLetterEntry}
+        handleDelete={handleDelete}
+      />
     </View>
   );
 }
