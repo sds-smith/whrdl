@@ -42,14 +42,13 @@ const Row = (props) => {
   
         <View style={rowStyles.main} >
 
-            <Text 
-    
+            <Text    
                 value={value0}
                 guessState={guessState}
                 currentGuess={currentGuess}
                 style={rowStyles.square}
                 onChange={handleLetterEntry}
-            />
+            >{value0}</Text>
 
             <Text 
                 value={value1}
@@ -57,7 +56,7 @@ const Row = (props) => {
                 currentGuess={currentGuess}
                 style={rowStyles.square}
                 onChange={handleLetterEntry}
-            />
+            >{value1}</Text>
 
             <Text 
                 value={value2}
@@ -65,7 +64,7 @@ const Row = (props) => {
                 currentGuess={currentGuess}
                 style={rowStyles.square}
                 onChange={handleLetterEntry}
-            />  
+            >{value2}</Text>  
 
             <Text 
                 value={value3}
@@ -73,7 +72,7 @@ const Row = (props) => {
                 currentGuess={currentGuess}
                 style={rowStyles.square}
                 onChange={handleLetterEntry}
-            />
+            >{value3}</Text>
 
             <Text 
                 value={value4}
@@ -81,7 +80,7 @@ const Row = (props) => {
                 currentGuess={currentGuess}
                 style={rowStyles.square}
                 onChange={handleLetterEntry}
-            />
+            >{value4}</Text>
         </View>
     )
 }
