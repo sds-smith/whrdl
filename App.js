@@ -51,11 +51,13 @@ export default function App() {
     }
   }
 
-  const handleWordEntry = async () => {
+  const handleWordEntry = /*async*/ () => {
     const currentWord = guessState[currentGuess]
     const currentMatches = letterMatches[currentGuess]
     const current = {}
     const target = {}
+    let keyColor
+
     for (let j = 0; j < targetWord.length; j ++) {
       let currentLetter = currentWord[j]
       let targetLetter = targetWord[j]
@@ -71,67 +73,54 @@ export default function App() {
       }
     }
     //if (await Datamuse.validWord(currentWord.join('').toLowerCase()) === true) {
-      for (let i = 0; i < currentWord.length; i ++) {
-        const keyMatch = currentWord[i]
-        console.log(`Shawn! ${keyMatch}`)
-        if (target[keyMatch]) {
-          if (target[keyMatch].length) {
-            if (target[keyMatch].includes(i)) {
+    for (let i = 0; i < currentWord.length; i ++) {
+      const keyMatch = currentWord[i]
+      if (target[keyMatch]) {
+        if (target[keyMatch].length) {
+          if (target[keyMatch].includes(i)) {
               currentMatches[i] = '#0f0'
-                setKeyboardMatch(keyboardMatch => ({
-                  ...keyboardMatch, keyMatch :'#0f0'
-                }))    
-                console.table(keyboardMatch)
-              setLetterMatches((letterMatches) => ({
-                ...letterMatches, currentGuess : currentMatches
-              }))
+              keyColor = '#0f0'
               target[keyMatch].splice(target[keyMatch].indexOf(i), 1)
               current[keyMatch].splice(current[keyMatch].indexOf(i), 1)
-            } else {
+          } else {
+              keyColor = '#ff0'
               if (current[keyMatch].length <= target[keyMatch].length) {
                 currentMatches[i] = '#ff0'
               } else {
-                current[keyMatch].splice(current[keyMatch].indexOf(i))
+                current[keyMatch].splice(current[keyMatch].indexOf(i), 1)
                 currentMatches[i] = '#999'
               }
-              setKeyboardMatch(keyboardMatch => ({
-                ...keyboardMatch, keyMatch :'#ff0'
-              }))
-              console.table(keyboardMatch)
-              setLetterMatches((letterMatches) => ({
-                ...letterMatches, currentGuess : currentMatches
-              }))
             }
-          } else {
-            currentMatches[i] = '#999'  
-            setLetterMatches((letterMatches) => ({
-              ...letterMatches, currentGuess : currentMatches
-            }))
-          }
         } else {
-          currentMatches[i] = '#999'
-          setKeyboardMatch(keyboardMatch => ({
-            ...keyboardMatch, keyMatch :'#999'
-          }))
-          console.table(keyboardMatch)
-          setLetterMatches((letterMatches) => ({
-            ...letterMatches, currentGuess : currentMatches
-          }))
+          currentMatches[i] = '#999'  
         }
-      }
-      if (guessState[currentGuess].join('') === targetWord) {
-        const guesses = currentGuess === 'guess1' ? 'GUESS' : 'GUESSES'
-        setHeaderMessage(`YOU WIN IN ${currentGuess[5]} ${guesses}!!`)
-      } else if (currentGuess === 'guess6') {
-        setHeaderMessage('wha wha (sad trombone)')
       } else {
-        const nextGuess = guesses[guesses.indexOf(currentGuess)+1]
-        setCurrentGuess(nextGuess)
-        setCurrentLetter(0)
+          currentMatches[i] = '#999'
+          keyColor = '#999'
       }
-    //} else {
-    //  window.alert('NOT IN WORD LIST')
-    //}
+      // *******************************
+      console.log(currentWord, keyMatch, keyColor)
+      setKeyboardMatch((keyboardMatch) => ({
+        ...keyboardMatch, keyMatch : keyColor
+      }))
+      setLetterMatches((letterMatches) => ({
+        ...letterMatches, currentGuess : currentMatches
+      }))
+      // *******************************
+    }
+    if (guessState[currentGuess].join('') === targetWord) {
+      const guesses = currentGuess === 'guess1' ? 'GUESS' : 'GUESSES'
+      setHeaderMessage(`YOU WIN IN ${currentGuess[5]} ${guesses}!!`)
+    } else if (currentGuess === 'guess6') {
+      setHeaderMessage('wha wha (sad trombone)')
+    } else {
+      const nextGuess = guesses[guesses.indexOf(currentGuess)+1]
+      setCurrentGuess(nextGuess)
+      setCurrentLetter(0)
+    }
+  //} else {
+  //  window.alert('NOT IN WORD LIST')
+  //}
   }
 
 
@@ -154,6 +143,12 @@ export default function App() {
       />
     </View>
   );
+
+  function newFunction(keyColor) {
+    setKeyboardMatch((keyboardMatch) => ({
+      ...keyboardMatch, keyMatch: keyColor
+    }));
+  }
 }
 
 const styles = StyleSheet.create({
@@ -163,4 +158,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+function newFunction_1(newFunction, keyColor) {
+  newFunction(keyColor);
+}
 
