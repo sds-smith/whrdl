@@ -70,31 +70,34 @@ export default function App() {
         target[targetLetter] = [j]
       }
     }
-    if (await Datamuse.validWord(currentWord.join('').toLowerCase()) === true) {
+    //if (await Datamuse.validWord(currentWord.join('').toLowerCase()) === true) {
       for (let i = 0; i < currentWord.length; i ++) {
-        let currentLetter = currentWord[i]
-        if (target[currentLetter]) {
-          if (target[currentLetter].length) {
-            if (target[currentLetter].includes(i)) {
+        const keyMatch = currentWord[i]
+        console.log(`Shawn! ${keyMatch}`)
+        if (target[keyMatch]) {
+          if (target[keyMatch].length) {
+            if (target[keyMatch].includes(i)) {
               currentMatches[i] = '#0f0'
-              setKeyboardMatch(keyboardMatch => ({
-                ...keyboardMatch, currentLetter :'#0f0'
-              }))
+                setKeyboardMatch(keyboardMatch => ({
+                  ...keyboardMatch, keyMatch :'#0f0'
+                }))    
+                console.table(keyboardMatch)
               setLetterMatches((letterMatches) => ({
                 ...letterMatches, currentGuess : currentMatches
               }))
-              target[currentLetter].splice(target[currentLetter].indexOf(i), 1)
-              current[currentLetter].splice(current[currentLetter].indexOf(i), 1)
+              target[keyMatch].splice(target[keyMatch].indexOf(i), 1)
+              current[keyMatch].splice(current[keyMatch].indexOf(i), 1)
             } else {
-              if (current[currentLetter].length <= target[currentLetter].length) {
+              if (current[keyMatch].length <= target[keyMatch].length) {
                 currentMatches[i] = '#ff0'
               } else {
-                current[currentLetter].splice(current[currentLetter].indexOf(i))
+                current[keyMatch].splice(current[keyMatch].indexOf(i))
                 currentMatches[i] = '#999'
               }
               setKeyboardMatch(keyboardMatch => ({
-                ...keyboardMatch, currentLetter :'#ff0'
+                ...keyboardMatch, keyMatch :'#ff0'
               }))
+              console.table(keyboardMatch)
               setLetterMatches((letterMatches) => ({
                 ...letterMatches, currentGuess : currentMatches
               }))
@@ -108,8 +111,9 @@ export default function App() {
         } else {
           currentMatches[i] = '#999'
           setKeyboardMatch(keyboardMatch => ({
-            ...keyboardMatch, currentLetter :'#999'
+            ...keyboardMatch, keyMatch :'#999'
           }))
+          console.table(keyboardMatch)
           setLetterMatches((letterMatches) => ({
             ...letterMatches, currentGuess : currentMatches
           }))
@@ -125,9 +129,9 @@ export default function App() {
         setCurrentGuess(nextGuess)
         setCurrentLetter(0)
       }
-    } else {
-      window.alert('NOT IN WORD LIST')
-    }
+    //} else {
+    //  window.alert('NOT IN WORD LIST')
+    //}
   }
 
 
