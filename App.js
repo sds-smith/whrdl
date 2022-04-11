@@ -38,8 +38,7 @@ export default function App() {
 
   const handleDelete = () => {
     setCurrentLetter(currentLetter => currentLetter - 1)
-    let currentWord
-    currentWord = guessState[currentGuess]
+    let currentWord = guessState[currentGuess]
     currentWord.splice(currentLetter, 1, '')
     setGuessState(guessState => ({...guessState, currentGuess : currentWord}))
   }
