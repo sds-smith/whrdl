@@ -8,54 +8,53 @@ const Row = (props) => {
 
     const wordGuess = guessState[guessId]
 
-    const value0 = wordGuess[0]
-    const value1 = wordGuess[1]
-    const value2 = wordGuess[2]
-    const value3 = wordGuess[3]
-    const value4 = wordGuess[4]
+    let value0 = wordGuess[0]
+    let value1 = wordGuess[1]
+    let value2 = wordGuess[2]
+    let value3 = wordGuess[3]
+    let value4 = wordGuess[4]
 
     useEffect(() => {    
-  
-    }, [currentLetter])
+        value0 = wordGuess[0]
+        value1 = wordGuess[1]
+        value2 = wordGuess[2]
+        value3 = wordGuess[3]
+        value4 = wordGuess[4]  
+    })
 
     return (
   
         <View style={rowStyles.main} >
 
-            <Text
-                ref={square0}    
+            <Text    
                 value={value0}
                 guessState={guessState}
                 currentGuess={currentGuess}
                 style={[rowStyles.square, {backgroundColor: letterMatches[guessId][0]}]}
             >{value0}</Text>
 
-            <Text
-                ref={square1} 
+            <Text 
                 value={value1}
                 guessState={guessState}
                 currentGuess={currentGuess}
                 style={[rowStyles.square, {backgroundColor: letterMatches[guessId][1]}]}
             >{value1}</Text>
 
-            <Text
-                ref={square2} 
+            <Text 
                 value={value2}
                 guessState={guessState}
                 currentGuess={currentGuess}
                 style={[rowStyles.square, {backgroundColor: letterMatches[guessId][2]}]}
             >{value2}</Text>  
 
-            <Text
-                ref={square3} 
+            <Text 
                 value={value3}
                 guessState={guessState}
                 currentGuess={currentGuess}
                 style={[rowStyles.square, {backgroundColor: letterMatches[guessId][3]}]}
             >{value3}</Text>
 
-            <Text
-                ref={square4} 
+            <Text 
                 value={value4}
                 guessState={guessState}
                 currentGuess={currentGuess}
