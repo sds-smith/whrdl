@@ -23,7 +23,7 @@ const Row = (props) => {
         <View style={rowStyles.main} >
 
             <Text
-                id={0}    
+                ref={square0}    
                 value={value0}
                 guessState={guessState}
                 currentGuess={currentGuess}
@@ -31,7 +31,7 @@ const Row = (props) => {
             >{value0}</Text>
 
             <Text
-                id={1} 
+                ref={square1} 
                 value={value1}
                 guessState={guessState}
                 currentGuess={currentGuess}
@@ -39,7 +39,7 @@ const Row = (props) => {
             >{value1}</Text>
 
             <Text
-                id={2} 
+                ref={square2} 
                 value={value2}
                 guessState={guessState}
                 currentGuess={currentGuess}
@@ -47,7 +47,7 @@ const Row = (props) => {
             >{value2}</Text>  
 
             <Text
-                id={3} 
+                ref={square3} 
                 value={value3}
                 guessState={guessState}
                 currentGuess={currentGuess}
@@ -55,7 +55,7 @@ const Row = (props) => {
             >{value3}</Text>
 
             <Text
-                id={4} 
+                ref={square4} 
                 value={value4}
                 guessState={guessState}
                 currentGuess={currentGuess}
