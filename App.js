@@ -62,19 +62,11 @@ export default function App() {
         target[targetLetter] = [j]
       }
     }
-    console.log(target)
-    console.log(current)
     for (let i = 0; i < currentWord.length; i ++) {
-      //to line 116
-      //setKeyboardmatch and setLetterMatches for current letter to '#0f0' green if it is a direct match
       let currentLetter = currentWord[i]
       if (target[currentLetter]) {
-        console.log(`target has property ${currentLetter}`)
         if (target[currentLetter].length) {
-          console.log('there is a match')
-          //if it's an exact match
           if (target[currentLetter].includes(i)) {
-            console.log(`target[${currentLetter}] includes ${i} so this is an exact match`)
             currentMatches[i] = '#0f0'
             setKeyboardMatch(keyboardMatch => ({
               ...keyboardMatch, keyMatch :'#0f0'
@@ -85,15 +77,11 @@ export default function App() {
             target[currentLetter].splice(target[currentLetter].indexOf(i), 1)
             current[currentLetter].splice(current[currentLetter].indexOf(i), 1)
           } else {
-            console.log('the match exists, but this is not an exact match')
             if (current[currentLetter].length <= target[currentLetter].length) {
-              console.log(`there is a ${currentLetter} left`)
               currentMatches[i] = '#ff0'
             } else {
               current[currentLetter].splice(current[currentLetter].indexOf(i))
-              console.log(`you guessed too many ${currentLetter}s`)
               currentMatches[i] = '#999'
-
             }
             setKeyboardMatch(keyboardMatch => ({
               ...keyboardMatch, keyMatch :'#ff0'
@@ -103,14 +91,12 @@ export default function App() {
             }))
           }
         } else {
-          console.log(`there is a match for ${currentLetter} but you've already found it target[${currentLetter}] contains an empty array now`)     
           currentMatches[i] = '#999'  
           setLetterMatches((letterMatches) => ({
             ...letterMatches, currentGuess : currentMatches
           }))
         }
       } else {
-        console.log(`${currentLetter} does not exist in ${targetWord}`)
         currentMatches[i] = '#999'
         setKeyboardMatch(keyboardMatch => ({
           ...keyboardMatch, keyMatch :'#999'
@@ -119,11 +105,6 @@ export default function App() {
           ...letterMatches, currentGuess : currentMatches
         }))
       }
-      //otherwise
-      //setKeyboardmatch and setLetterMatches for current letter to '#ff0' yellow if a match is available
-      //otherwise
-      //setKeyboardmatch and setLetterMatches for current letter to '#999' if no match
- 
     }
     if (guessState[currentGuess].join('') === targetWord) {
       const guesses = currentGuess === 'guess1' ? 'GUESS' : 'GUESSES'
