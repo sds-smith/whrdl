@@ -44,12 +44,25 @@ export default function App() {
   }
 
   const handleWordEntry = () => {
-    const target = []
-    for (let j = 0; j < targetWord.length; j ++) {
-      target.push(targetWord[j])
-    }
     const currentWord = guessState[currentGuess]
     const currentMatches = letterMatches[currentGuess]
+    const current = {}
+    const target = {}
+    for (let j = 0; j < targetWord.length; j ++) {
+      let currentLetter = currentWord[j]
+      let targetLetter = targetWord[j]
+      if (current[currentLetter]) {
+        current[currentLetter].push(j)
+      } else {
+        current[currentLetter] = [j]
+      }
+      if (target[targetLetter]) {
+        target[targetLetter].push(j)
+      } else {
+        target[targetLetter] = [j]
+      }
+    }
+
     for (let i = 0; i < currentWord.length; i ++) {
       const keyMatch = currentWord[i]
       if (currentWord[i] === target[i]) {
