@@ -29,6 +29,25 @@ export default function App() {
   const [headerMessage, setHeaderMessage] = useState('')
   const [targetWord, setTargetWord] = useState('orate'.toUpperCase())
 
+  const getTargetWord = async () => {
+    const randomIndex = Math.floor(Math.random() * 1000)
+    console.log(randomIndex)
+    try {
+      const response = await fetch('https://api.datamuse.com/words?sp=?????&max=1000')
+      if (response.ok) {
+        const jsonResponse = await response.json()
+        const wordArr = await jsonResponse
+        console.log(`Yo the word is ${wordArr[randomIndex].word}`)
+        return wordArr[randomIndex].word
+      }
+    } catch(error) {
+      console.log(`Shawn - async error ${error}`)
+    }
+  }
+
+  const tarjay = getTargetWord()
+  console.log(`tarjay=${tarjay}`)
+
   const handleLetterEntry = (letter) => {
     const guessArray = guessState[currentGuess]
     guessArray[currentLetter]=letter
