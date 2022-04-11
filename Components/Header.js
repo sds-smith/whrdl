@@ -18,7 +18,10 @@ const headerStyles = StyleSheet.create ({
         height: 50,
         alignItems: 'center',
         justifyContent: 'center',
-        borderWidth: 5
+        borderBottomWidth: 2,
+        borderBottomColor: '#e6e6e6',
+        marginBottom: 10,
+        paddingTop: 10
     },
     text: {
         fontSize: 30,
