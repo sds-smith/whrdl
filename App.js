@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View } from 'react-native';
 import * as React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Header from './Components/Header'
 import Board from './Components/Board'
 import Keyboard from './Components/Keyboard'
@@ -21,13 +21,6 @@ export default function App() {
     const letter = letters[i]
     keyMatches[letter] = '#e6e6e6'
   }
-  const [guessState, setGuessState] = useState(board) 
-  const [letterMatches, setLetterMatches] = useState(matches) 
-  const [keyboardMatch, setKeyboardMatch] = useState(keyMatches)
-  const [currentGuess, setCurrentGuess] = useState(guesses[0])
-  const [currentLetter,setCurrentLetter] = useState(0)
-  const [headerMessage, setHeaderMessage] = useState('')
-  const [targetWord, setTargetWord] = useState('orate'.toUpperCase())
 
   const getTargetWord = async () => {
     const randomIndex = Math.floor(Math.random() * 1000)
@@ -38,15 +31,39 @@ export default function App() {
         const jsonResponse = await response.json()
         const wordArr = await jsonResponse
         console.log(`Yo the word is ${wordArr[randomIndex].word}`)
-        return wordArr[randomIndex].word
+        setTargetWord(wordArr[randomIndex].word.toUpperCase())
       }
     } catch(error) {
       console.log(`Shawn - async error ${error}`)
     }
   }
 
-  const tarjay = getTargetWord()
-  console.log(`tarjay=${tarjay}`)
+  const validWord = async (guess) => {
+    try {
+      console.log(guess)
+      const response = await fetch(`https://api.datamuse.com/words?sp=?????,+${guess}&max=1`)
+      if (response.ok) {
+        const jsonResponse = await response.json()
+        const respArr = await jsonResponse
+        console.log(respArr)
+        console.log(respArr.length > 0)
+        return await respArr.length > 0
+      }
+    } catch(error) {
+      console.log(`Shawn - async error ${error}`)
+    }
+  }
+  const [guessState, setGuessState] = useState(board) 
+  const [letterMatches, setLetterMatches] = useState(matches) 
+  const [keyboardMatch, setKeyboardMatch] = useState(keyMatches)
+  const [currentGuess, setCurrentGuess] = useState(guesses[0])
+  const [currentLetter,setCurrentLetter] = useState(0)
+  const [headerMessage, setHeaderMessage] = useState('')
+  const [targetWord, setTargetWord] = useState('ORATE')
+
+  useEffect(() => {
+    getTargetWord()
+  },[])
 
   const handleLetterEntry = (letter) => {
     const guessArray = guessState[currentGuess]
@@ -62,7 +79,7 @@ export default function App() {
     setGuessState(guessState => ({...guessState, currentGuess : currentWord}))
   }
 
-  const handleWordEntry = () => {
+  const handleWordEntry = async () => {
     const currentWord = guessState[currentGuess]
     const currentMatches = letterMatches[currentGuess]
     const current = {}
@@ -81,59 +98,63 @@ export default function App() {
         target[targetLetter] = [j]
       }
     }
-    for (let i = 0; i < currentWord.length; i ++) {
-      let currentLetter = currentWord[i]
-      if (target[currentLetter]) {
-        if (target[currentLetter].length) {
-          if (target[currentLetter].includes(i)) {
-            currentMatches[i] = '#0f0'
-            setKeyboardMatch(keyboardMatch => ({
-              ...keyboardMatch, keyMatch :'#0f0'
-            }))
-            setLetterMatches((letterMatches) => ({
-              ...letterMatches, currentGuess : currentMatches
-            }))
-            target[currentLetter].splice(target[currentLetter].indexOf(i), 1)
-            current[currentLetter].splice(current[currentLetter].indexOf(i), 1)
-          } else {
-            if (current[currentLetter].length <= target[currentLetter].length) {
-              currentMatches[i] = '#ff0'
+    if (await validWord(currentWord.join('').toLowerCase()) === true) {
+      for (let i = 0; i < currentWord.length; i ++) {
+        let currentLetter = currentWord[i]
+        if (target[currentLetter]) {
+          if (target[currentLetter].length) {
+            if (target[currentLetter].includes(i)) {
+              currentMatches[i] = '#0f0'
+              setKeyboardMatch(keyboardMatch => ({
+                ...keyboardMatch, currentLetter :'#0f0'
+              }))
+              setLetterMatches((letterMatches) => ({
+                ...letterMatches, currentGuess : currentMatches
+              }))
+              target[currentLetter].splice(target[currentLetter].indexOf(i), 1)
+              current[currentLetter].splice(current[currentLetter].indexOf(i), 1)
             } else {
-              current[currentLetter].splice(current[currentLetter].indexOf(i))
-              currentMatches[i] = '#999'
+              if (current[currentLetter].length <= target[currentLetter].length) {
+                currentMatches[i] = '#ff0'
+              } else {
+                current[currentLetter].splice(current[currentLetter].indexOf(i))
+                currentMatches[i] = '#999'
+              }
+              setKeyboardMatch(keyboardMatch => ({
+                ...keyboardMatch, currentLetter :'#ff0'
+              }))
+              setLetterMatches((letterMatches) => ({
+                ...letterMatches, currentGuess : currentMatches
+              }))
             }
-            setKeyboardMatch(keyboardMatch => ({
-              ...keyboardMatch, keyMatch :'#ff0'
-            }))
+          } else {
+            currentMatches[i] = '#999'  
             setLetterMatches((letterMatches) => ({
               ...letterMatches, currentGuess : currentMatches
             }))
           }
         } else {
-          currentMatches[i] = '#999'  
+          currentMatches[i] = '#999'
+          setKeyboardMatch(keyboardMatch => ({
+            ...keyboardMatch, currentLetter :'#999'
+          }))
           setLetterMatches((letterMatches) => ({
             ...letterMatches, currentGuess : currentMatches
           }))
         }
-      } else {
-        currentMatches[i] = '#999'
-        setKeyboardMatch(keyboardMatch => ({
-          ...keyboardMatch, keyMatch :'#999'
-        }))
-        setLetterMatches((letterMatches) => ({
-          ...letterMatches, currentGuess : currentMatches
-        }))
       }
-    }
-    if (guessState[currentGuess].join('') === targetWord) {
-      const guesses = currentGuess === 'guess1' ? 'GUESS' : 'GUESSES'
-      setHeaderMessage(`YOU WIN IN ${currentGuess[5]} ${guesses}!!`)
-    } else if (currentGuess === 'guess6') {
-      setHeaderMessage('wha wha (sad trombone)')
+      if (guessState[currentGuess].join('') === targetWord) {
+        const guesses = currentGuess === 'guess1' ? 'GUESS' : 'GUESSES'
+        setHeaderMessage(`YOU WIN IN ${currentGuess[5]} ${guesses}!!`)
+      } else if (currentGuess === 'guess6') {
+        setHeaderMessage('wha wha (sad trombone)')
+      } else {
+        const nextGuess = guesses[guesses.indexOf(currentGuess)+1]
+        setCurrentGuess(nextGuess)
+        setCurrentLetter(0)
+      }
     } else {
-      const nextGuess = guesses[guesses.indexOf(currentGuess)+1]
-      setCurrentGuess(nextGuess)
-      setCurrentLetter(0)
+      window.alert('NOT IN WORD LIST')
     }
   }
 
