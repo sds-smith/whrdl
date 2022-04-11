@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react'
 import Header from './Components/Header'
 import Board from './Components/Board'
 import Keyboard from './Components/Keyboard'
+import Datamuse from './util/Datamuse';
 
 export default function App() {
 
@@ -22,37 +23,6 @@ export default function App() {
     keyMatches[letter] = '#e6e6e6'
   }
 
-  const getTargetWord = async () => {
-    const randomIndex = Math.floor(Math.random() * 1000)
-    console.log(randomIndex)
-    try {
-      const response = await fetch('https://api.datamuse.com/words?sp=?????&max=1000')
-      if (response.ok) {
-        const jsonResponse = await response.json()
-        const wordArr = await jsonResponse
-        console.log(`Yo the word is ${wordArr[randomIndex].word}`)
-        setTargetWord(wordArr[randomIndex].word.toUpperCase())
-      }
-    } catch(error) {
-      console.log(`Shawn - async error ${error}`)
-    }
-  }
-
-  const validWord = async (guess) => {
-    try {
-      console.log(guess)
-      const response = await fetch(`https://api.datamuse.com/words?sp=?????,+${guess}&max=1`)
-      if (response.ok) {
-        const jsonResponse = await response.json()
-        const respArr = await jsonResponse
-        console.log(respArr)
-        console.log(respArr.length > 0)
-        return await respArr.length > 0
-      }
-    } catch(error) {
-      console.log(`Shawn - async error ${error}`)
-    }
-  }
   const [guessState, setGuessState] = useState(board) 
   const [letterMatches, setLetterMatches] = useState(matches) 
   const [keyboardMatch, setKeyboardMatch] = useState(keyMatches)
@@ -62,7 +32,7 @@ export default function App() {
   const [targetWord, setTargetWord] = useState('ORATE')
 
   useEffect(() => {
-    getTargetWord()
+    Datamuse.getTargetWord(setTargetWord)
   },[])
 
   const handleLetterEntry = (letter) => {
@@ -98,7 +68,7 @@ export default function App() {
         target[targetLetter] = [j]
       }
     }
-    if (await validWord(currentWord.join('').toLowerCase()) === true) {
+    if (await Datamuse.validWord(currentWord.join('').toLowerCase()) === true) {
       for (let i = 0; i < currentWord.length; i ++) {
         let currentLetter = currentWord[i]
         if (target[currentLetter]) {
