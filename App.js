@@ -46,7 +46,7 @@ export default function App() {
     if (currentLetter > 0) {
       setCurrentLetter(currentLetter => currentLetter - 1)
       let currentWord = guessState[currentGuess]
-      currentWord.splice(currentLetter, 1, '')
+      currentWord.splice(currentLetter-1, 1, '')
       setGuessState(guessState => ({...guessState, currentGuess : currentWord}))
     }
   }
@@ -99,7 +99,6 @@ export default function App() {
           keyColor = '#999'
       }
       // *******************************
-      console.log(currentWord, keyMatch, keyColor)
       setKeyboardMatch((keyboardMatch) => ({
         ...keyboardMatch, keyMatch : keyColor
       }))
@@ -143,12 +142,6 @@ export default function App() {
       />
     </View>
   );
-
-  function newFunction(keyColor) {
-    setKeyboardMatch((keyboardMatch) => ({
-      ...keyboardMatch, keyMatch: keyColor
-    }));
-  }
 }
 
 const styles = StyleSheet.create({
@@ -156,10 +149,5 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-  },
+  }
 });
-
-function newFunction_1(newFunction, keyColor) {
-  newFunction(keyColor);
-}
-

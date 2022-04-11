@@ -8,22 +8,6 @@ const Row = (props) => {
 
     let [value0, value1, value2, value3, value4] = guessState[guessId]
 
-    // const wordGuess = guessState[guessId]
-// 
-    // let value0 = wordGuess[0]
-    // let value1 = wordGuess[1]
-    // let value2 = wordGuess[2]
-    // let value3 = wordGuess[3]
-    // let value4 = wordGuess[4]
-// 
-    // useEffect(() => {    
-        // value0 = wordGuess[0]
-        // value1 = wordGuess[1]
-        // value2 = wordGuess[2]
-        // value3 = wordGuess[3]
-        // value4 = wordGuess[4]  
-    // })
-
     return (
   
         <View style={rowStyles.main} >
