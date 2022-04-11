@@ -64,7 +64,10 @@ export default function App() {
     }
 
     for (let i = 0; i < currentWord.length; i ++) {
+      //to line 100
       const keyMatch = currentWord[i]
+
+      //setKeyboardmatch and setLetterMatches for current letter to '#0f0' green if it is a direct match
       if (currentWord[i] === target[i]) {
         currentMatches[i] = '#0f0'
         setKeyboardMatch(keyboardMatch => ({
@@ -73,7 +76,12 @@ export default function App() {
         setLetterMatches((letterMatches) => ({
           ...letterMatches, currentGuess : currentMatches
         }))
-      } else if (target.includes(currentWord[i])) {
+      }
+      //otherwise
+      //setKeyboardmatch and setLetterMatches for current letter to '#ff0' yellow if a match is available
+      //otherwise
+      //setKeyboardmatch and setLetterMatches for current letter to '#999' if no match
+ else if (target.includes(currentWord[i])) {
         currentMatches[i] = '#ff0'
         setKeyboardMatch(keyboardMatch => ({
           ...keyboardMatch, keyMatch :'#ff0'
