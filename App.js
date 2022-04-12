@@ -38,7 +38,7 @@ export default function App() {
     const guessArray = guessState[currentGuess]
     guessArray[currentLetter]=letter
     setGuessState(guessState => ({...guessState, currentGuess : guessArray}))
-    setCurrentLetter(currentLetter => currentLetter + 1)
+    currentLetter < 4 && setCurrentLetter(currentLetter => currentLetter + 1)
   }
 
   const handleDelete = () => {
