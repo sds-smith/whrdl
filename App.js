@@ -78,33 +78,34 @@ export default function App() {
       if (target[keyMatch]) {
         if (target[keyMatch].length) {
           if (target[keyMatch].includes(i)) {
-              currentMatches[i] = '#0f0'
-              keyColor = '#0f0'
+              currentMatches[i] = '#0f0' //green
+              keyColor = '#0f0' //green
               target[keyMatch].splice(target[keyMatch].indexOf(i), 1)
               current[keyMatch].splice(current[keyMatch].indexOf(i), 1)
           } else {
-              keyColor = '#ff0'
+              keyColor = '#ff0' //yellow
               if (current[keyMatch].length <= target[keyMatch].length) {
-                currentMatches[i] = '#ff0'
+                currentMatches[i] = '#ff0' //yellow
               } else {
                 current[keyMatch].splice(current[keyMatch].indexOf(i), 1)
-                currentMatches[i] = '#999'
+                currentMatches[i] = '#999' //gray
               }
             }
         } else {
-          currentMatches[i] = '#999'  
+          currentMatches[i] = '#999'  //gray
         }
       } else {
-          currentMatches[i] = '#999'
-          keyColor = '#999'
+          currentMatches[i] = '#999' //gray
+          keyColor = '#999' //gray
       }
       // *******************************
       setKeyboardMatch((keyboardMatch) => ({
-        ...keyboardMatch, keyMatch : keyColor
+        ...keyboardMatch, [currentWord[i]] : keyColor
       }))
       setLetterMatches((letterMatches) => ({
         ...letterMatches, currentGuess : currentMatches
       }))
+
       // *******************************
     }
     if (guessState[currentGuess].join('') === targetWord) {
@@ -121,7 +122,6 @@ export default function App() {
   //  window.alert('NOT IN WORD LIST')
   //}
   }
-
 
   return (
     <View style={styles.container}>
