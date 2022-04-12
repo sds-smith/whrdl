@@ -51,12 +51,11 @@ export default function App() {
     }
   }
 
-  const handleWordEntry = /*async*/ () => {
+  const handleWordEntry = async () => {
     const currentWord = guessState[currentGuess]
     const currentMatches = letterMatches[currentGuess]
     const current = {}
     const target = {}
-    let keyColor
 
     for (let j = 0; j < targetWord.length; j ++) {
       let currentLetter = currentWord[j]
@@ -72,8 +71,10 @@ export default function App() {
         target[targetLetter] = [j]
       }
     }
-    //if (await Datamuse.validWord(currentWord.join('').toLowerCase()) === true) {
+
+    if (await Datamuse.validWord(currentWord.join('').toLowerCase()) === true) {
     for (let i = 0; i < currentWord.length; i ++) {
+      let keyColor
       const keyMatch = currentWord[i]
       if (target[keyMatch]) {
         if (target[keyMatch].length) {
@@ -105,7 +106,6 @@ export default function App() {
       setLetterMatches((letterMatches) => ({
         ...letterMatches, currentGuess : currentMatches
       }))
-
       // *******************************
     }
     if (guessState[currentGuess].join('') === targetWord) {
@@ -118,9 +118,9 @@ export default function App() {
       setCurrentGuess(nextGuess)
       setCurrentLetter(0)
     }
-  //} else {
-  //  window.alert('NOT IN WORD LIST')
-  //}
+  } else {
+   window.alert('NOT IN WORD LIST')
+  }
   }
 
   return (
