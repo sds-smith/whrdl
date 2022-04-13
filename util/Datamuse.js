@@ -35,8 +35,13 @@ const Datamuse =  {
         const response = await fetch(`https://api.datamuse.com/words?rel_trg=${word}&max=10`)
         if (response.ok) {
           const jsonResponse = await response.json()
-          const respArr = jsonResponse.map(e => e.word)
-          window.alert(respArr)
+          const respArr = jsonResponse.map(e => e.word.toUpperCase())
+          let message = ''
+          for (let i = 0; i < respArr.length; i ++) {
+            message += (respArr[i])
+            message += ('\n')
+          }
+          window.alert(message.length ? message : 'Sorry. There is no hint for this word')
         }
       } catch(error) {
         console.log(error)
