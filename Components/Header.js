@@ -4,8 +4,8 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 const Header = (props) => {
     return (
         <View style={headerStyles.main}>
-            <View style={headerStyles.buttonContainer}>
-                <TouchableOpacity style={headerStyles.button}>
+            <View style={headerStyles.buttonContainer} >
+                <TouchableOpacity style={headerStyles.button} onPress={props.handleReset}>
                     <Text>RESET</Text>
                 </TouchableOpacity>
             </View>
@@ -15,7 +15,7 @@ const Header = (props) => {
                 <Text>{props.headerMessage}</Text>
             </View> 
             <View style={headerStyles.buttonContainer}>
-                <TouchableOpacity style={headerStyles.button}>
+                <TouchableOpacity style={headerStyles.button} >
                     <Text>HINT</Text>
                 </TouchableOpacity>       
             </View>
@@ -59,7 +59,7 @@ const headerStyles = StyleSheet.create ({
         alignItems: 'center',
         justifyContent: 'center',
         alignContent: 'center',
-        borderRadius: 5
+        borderRadius: 6
     }
 
 })

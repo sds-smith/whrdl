@@ -122,9 +122,19 @@ export default function App() {
   }
   }
 
+  const handleReset = () => {
+    setGuessState(board) 
+    setLetterMatches(matches) 
+    setKeyboardMatch(keyMatches)
+    setCurrentGuess(guesses[0])
+    setCurrentLetter(0)
+    setHeaderMessage('')
+    Datamuse.getTargetWord(setTargetWord)
+  }
+
   return (
     <View style={styles.container}>
-      <Header headerMessage={headerMessage}/>
+      <Header headerMessage={headerMessage} handleReset={handleReset}/>
       <Board
         guessState={guessState}
         letterMatches={letterMatches}
