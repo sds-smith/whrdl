@@ -132,9 +132,17 @@ export default function App() {
     Datamuse.getTargetWord(setTargetWord)
   }
 
+  const handleHint = () => {
+    Datamuse.getHint(targetWord)
+  }
+
   return (
     <View style={styles.container}>
-      <Header headerMessage={headerMessage} handleReset={handleReset}/>
+      <Header 
+        headerMessage={headerMessage} 
+        handleReset={handleReset}
+        handleHint={handleHint}
+      />
       <Board
         guessState={guessState}
         letterMatches={letterMatches}

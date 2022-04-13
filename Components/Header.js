@@ -15,7 +15,7 @@ const Header = (props) => {
                 <Text>{props.headerMessage}</Text>
             </View> 
             <View style={headerStyles.buttonContainer}>
-                <TouchableOpacity style={headerStyles.button} >
+                <TouchableOpacity style={headerStyles.button} onPress={props.handleHint}>
                     <Text>HINT</Text>
                 </TouchableOpacity>       
             </View>

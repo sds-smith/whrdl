@@ -28,6 +28,19 @@ const Datamuse =  {
       } catch(error) {
         console.log(error)
       }
+    },
+
+    async getHint(word) {
+      try {
+        const response = await fetch(`https://api.datamuse.com/words?rel_trg=${word}&max=10`)
+        if (response.ok) {
+          const jsonResponse = await response.json()
+          const respArr = jsonResponse.map(e => e.word)
+          window.alert(respArr)
+        }
+      } catch(error) {
+        console.log(error)
+      }
     }
 }
 
